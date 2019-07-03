@@ -14,6 +14,7 @@
 		0943164D22CA8FA300ED0F7B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0943164B22CA8FA300ED0F7B /* LaunchScreen.storyboard */; };
 		0943165822CA8FA300ED0F7B /* BankingSystemiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0943165722CA8FA300ED0F7B /* BankingSystemiOSTests.swift */; };
 		0943166322CA8FA300ED0F7B /* BankingSystemiOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0943166222CA8FA300ED0F7B /* BankingSystemiOSUITests.swift */; };
+		9BBFD88C22CC289D0044387B /* bank.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BBFD88B22CC289D0044387B /* bank.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		0943165E22CA8FA300ED0F7B /* BankingSystemiOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BankingSystemiOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0943166222CA8FA300ED0F7B /* BankingSystemiOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankingSystemiOSUITests.swift; sourceTree = "<group>"; };
 		0943166422CA8FA300ED0F7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9BBFD88B22CC289D0044387B /* bank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bank.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 		0943164122CA8FA100ED0F7B /* BankingSystemiOS */ = {
 			isa = PBXGroup;
 			children = (
+				9BBFD88822CC28860044387B /* Images */,
 				0943164222CA8FA100ED0F7B /* AppDelegate.swift */,
 				0943164422CA8FA100ED0F7B /* ViewController.swift */,
 				0943164622CA8FA100ED0F7B /* Main.storyboard */,
@@ -123,6 +126,14 @@
 				0943166422CA8FA300ED0F7B /* Info.plist */,
 			);
 			path = BankingSystemiOSUITests;
+			sourceTree = "<group>";
+		};
+		9BBFD88822CC28860044387B /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				9BBFD88B22CC289D0044387B /* bank.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,6 +243,7 @@
 				0943164D22CA8FA300ED0F7B /* LaunchScreen.storyboard in Resources */,
 				0943164A22CA8FA300ED0F7B /* Assets.xcassets in Resources */,
 				0943164822CA8FA100ED0F7B /* Main.storyboard in Resources */,
+				9BBFD88C22CC289D0044387B /* bank.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
