@@ -7,12 +7,15 @@
 //
 
 import UIKit
-
+import FirebaseAuth
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var emailEditText: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var passwordEditText: UITextField!
+    //var homeNavigationController = UIViewController()
+    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -22,12 +25,24 @@ class LoginViewController: UIViewController {
     @IBAction func loginButtonAction(_ sender: UIButton) {
         let emailId: String = emailEditText.text!
         let password: String = passwordEditText.text!
-        Auth.auth().signIn(withEmail: emailId, password: password) { [weak self] user, error in
-            guard let strongSelf = self else { return }
-            // ...
-        }
+        
         if !emailId.isEmpty && !password.isEmpty{
-            print("Success")
+            
+            Auth.auth().signIn(withEmail: emailId, password: password) { [weak self] user, error in
+                guard self != nil else { return }
+                // ...
+                let userID = Auth.auth().currentUser!.uid
+                print("User ID is \(userID)")
+                if !userID.isEmpty{
+                    let resultViewController = self!.storyBoard.instantiateViewController(withIdentifier: "homeSB") as! HomeViewController
+                    self?.navigationController?.pushViewController(resultViewController, animated: true)
+
+                    
+                
+                }
+            }
+            
+            
         }
         
         

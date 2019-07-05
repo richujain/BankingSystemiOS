@@ -66,6 +66,34 @@
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="137.94642857142856"/>
         </scene>
+        <!--Home View Controller-->
+        <scene sceneID="vSd-ny-7s1">
+            <objects>
+                <viewController restorationIdentifier="homeSB" storyboardIdentifier="homeSB" id="821-Ek-vOb" customClass="HomeViewController" customModule="BankingSystemiOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GGY-Wc-jtn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="82t-LI-0Xh">
+                                <rect key="frame" x="20" y="794" width="366" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logoutButtonAction:" destination="821-Ek-vOb" eventType="touchUpInside" id="5GH-5h-T98"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="YUA-Mw-ucV"/>
+                    </view>
+                    <connections>
+                        <outlet property="logoutButton" destination="82t-LI-0Xh" id="di0-SB-HTg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ets-qe-nzI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1750.7246376811595" y="137.94642857142856"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="l02-CI-uPL">
             <objects>
