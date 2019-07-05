@@ -13,7 +13,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailEditText: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var passwordEditText: UITextField!
-    //var homeNavigationController = UIViewController()
+    //let homeNavigationController = UIViewController()
     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
     
     override func viewDidLoad() {
@@ -31,15 +31,23 @@ class LoginViewController: UIViewController {
             Auth.auth().signIn(withEmail: emailId, password: password) { [weak self] user, error in
                 guard self != nil else { return }
                 // ...
-                let userID = Auth.auth().currentUser!.uid
-                print("User ID is \(userID)")
-                if !userID.isEmpty{
-                    let resultViewController = self!.storyBoard.instantiateViewController(withIdentifier: "homeSB") as! HomeViewController
-                    self?.navigationController?.pushViewController(resultViewController, animated: true)
-
-                    
-                
+                if let userID = Auth.auth().currentUser?.uid{
+                    print("User ID is \(userID)")
+                    if !userID.isEmpty{
+                        let resultViewController = self!.storyBoard.instantiateViewController(withIdentifier: "homeSB") as! HomeViewController
+                        self?.navigationController?.pushViewController(resultViewController, animated: true)
+                    }
                 }
+                else{
+                    print("Invalid Credentials")
+                    let alert = UIAlertController(title: "Error", message: "Invalid Credentials", preferredStyle: .alert)
+                    let dismiss = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
+                    alert.addAction(dismiss)
+                    
+                    self!.present(alert, animated: true, completion: nil)
+                    
+                }
+                
             }
             
             
@@ -47,6 +55,8 @@ class LoginViewController: UIViewController {
         
         
     }
+    
+    
     
 }
 
