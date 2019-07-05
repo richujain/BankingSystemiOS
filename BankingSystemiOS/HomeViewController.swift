@@ -25,9 +25,22 @@ class HomeViewController: UIViewController {
         do {
             try firebaseAuth.signOut()
             //self.navigationController?.pushViewController(self.newViewController, animated: true)
+            //self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+            dismissViewControllers()
+            self.navigationController?.popToRootViewController(animated: true)
+
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
         
     }
+    func dismissViewControllers() {
+        
+        guard let vc = self.presentingViewController else { return }
+        
+        while (vc.presentingViewController != nil) {
+            vc.dismiss(animated: true, completion: nil)
+        }
+    }
+    
 }
