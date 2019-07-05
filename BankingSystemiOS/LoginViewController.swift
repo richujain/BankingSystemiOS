@@ -22,9 +22,12 @@ class LoginViewController: UIViewController {
     @IBAction func loginButtonAction(_ sender: UIButton) {
         let emailId: String = emailEditText.text!
         let password: String = passwordEditText.text!
+        Auth.auth().signIn(withEmail: emailId, password: password) { [weak self] user, error in
+            guard let strongSelf = self else { return }
+            // ...
+        }
         if !emailId.isEmpty && !password.isEmpty{
-            print(emailId)
-            print(password)
+            print("Success")
         }
         
         
