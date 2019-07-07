@@ -8,7 +8,7 @@
 
 import UIKit
 import FirebaseAuth
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var emailEditText: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -19,10 +19,20 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-       
+        self.navigationController!.navigationBar.isHidden = true;
+        self.passwordEditText.delegate = self
+        self.emailEditText.delegate = self
         
     }
-    @IBAction func loginButtonAction(_ sender: UIButton) {
+    private func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
+        //textField code
+        
+        textField.resignFirstResponder()  //if desired
+        loginCheck()
+        return true
+    }
+    func loginCheck() {
         let emailId: String = emailEditText.text!
         let password: String = passwordEditText.text!
         
@@ -34,7 +44,7 @@ class LoginViewController: UIViewController {
                 if let userID = Auth.auth().currentUser?.uid{
                     print("User ID is \(userID)")
                     if !userID.isEmpty{
-                        let resultViewController = self!.storyBoard.instantiateViewController(withIdentifier: "homeSB") as! HomeViewController
+                        let resultViewController = self!.storyBoard.instantiateViewController(withIdentifier: "homeSB") as! EmployeeHomeViewController
                         self?.navigationController?.pushViewController(resultViewController, animated: true)
                     }
                 }
@@ -52,7 +62,10 @@ class LoginViewController: UIViewController {
             
             
         }
+    }
+    @IBAction func loginButtonAction(_ sender: UIButton) {
         
+        loginCheck()
         
     }
     

@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseAuth
 
-class HomeViewController: UIViewController {
+class EmployeeHomeViewController: UIViewController {
     @IBOutlet weak var logoutButton: UIButton!
     //let newViewController = LoginViewController()
 
