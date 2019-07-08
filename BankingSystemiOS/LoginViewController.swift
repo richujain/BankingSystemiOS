@@ -13,6 +13,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailEditText: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var passwordEditText: UITextField!
+    var overlay : UIView? // This should be a class variable
     //let homeNavigationController = UIViewController()
     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
     
@@ -20,19 +21,24 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.navigationController!.navigationBar.isHidden = true;
-        self.passwordEditText.delegate = self
         self.emailEditText.delegate = self
+        self.passwordEditText.delegate = self
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
         
     }
-    private func textFieldShouldReturn(textField: UITextField) -> Bool {
-        
-        //textField code
-        
-        textField.resignFirstResponder()  //if desired
-        loginCheck()
-        return true
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     func loginCheck() {
+        //---
+        overlay = UIView(frame: view.frame)
+        overlay!.backgroundColor = UIColor.black
+        overlay!.alpha = 0.8
+        
+        view.addSubview(overlay!)
+        //---
         let emailId: String = emailEditText.text!
         let password: String = passwordEditText.text!
         
@@ -44,12 +50,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 if let userID = Auth.auth().currentUser?.uid{
                     print("User ID is \(userID)")
                     if !userID.isEmpty{
+                        self!.overlay?.removeFromSuperview()
                         let resultViewController = self!.storyBoard.instantiateViewController(withIdentifier: "homeSB") as! EmployeeHomeViewController
                         self?.navigationController?.pushViewController(resultViewController, animated: true)
                     }
                 }
                 else{
-                    print("Invalid Credentials")
+                    self!.overlay?.removeFromSuperview()
                     let alert = UIAlertController(title: "Error", message: "Invalid Credentials", preferredStyle: .alert)
                     let dismiss = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
                     alert.addAction(dismiss)
@@ -62,6 +69,26 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             
             
         }
+        else{
+            print("Empty Fields")
+            self.overlay?.removeFromSuperview()
+            let alertifEmpty = UIAlertController(title: "Error", message: "Fields cannot be empty", preferredStyle: .alert)
+            let dismiss = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
+            alertifEmpty.addAction(dismiss)
+            
+            self.present(alertifEmpty, animated: true, completion: nil)
+        }
+    }
+    internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        //textField code
+        print("Pressed")
+        emailEditText.resignFirstResponder()
+        if passwordEditText.resignFirstResponder(){
+            loginCheck()
+        }        
+        
+        return true
     }
     @IBAction func loginButtonAction(_ sender: UIButton) {
         
