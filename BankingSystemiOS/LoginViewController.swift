@@ -51,7 +51,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     print("User ID is \(userID)")
                     if !userID.isEmpty{
                         self!.overlay?.removeFromSuperview()
-                        let resultViewController = self!.storyBoard.instantiateViewController(withIdentifier: "homeSB") as! EmployeeHomeViewController
+                        let resultViewController = self!.storyBoard.instantiateViewController(withIdentifier: "EmployeeHomeSB") as! EmployeeHomeTVC
                         self?.navigationController?.pushViewController(resultViewController, animated: true)
                     }
                 }

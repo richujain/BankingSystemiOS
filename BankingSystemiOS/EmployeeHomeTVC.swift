@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import FirebaseAuth
 
-class EmployeeHomeVCTableViewController: UITableViewController {
+class EmployeeHomeTVC: UITableViewController {
 
+    @IBOutlet var employeeActivities: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,13 +26,42 @@ class EmployeeHomeVCTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 2
     }
+    func dismissViewControllers() {
+        
+        guard let vc = self.presentingViewController else { return }
+        
+        while (vc.presentingViewController != nil) {
+            vc.dismiss(animated: true, completion: nil)
+        }
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 && indexPath.row == 0{
+            print("Add user")
+        }
+        else if indexPath.section == 0 && indexPath.row == 1 {
+            print("Modify User")
+        } else if indexPath.section == 2 && indexPath.row == 1{
+            let firebaseAuth = Auth.auth()
+            do {
+                try firebaseAuth.signOut()
+                //self.navigationController?.pushViewController(self.newViewController, animated: true)
+                //self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                dismissViewControllers()
+                self.navigationController?.popToRootViewController(animated: true)
+                
+            } catch let signOutError as NSError {
+                print ("Error signing out: %@", signOutError)
+            }
+        }
+    }
+    
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
