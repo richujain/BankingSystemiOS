@@ -13,6 +13,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailEditText: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var passwordEditText: UITextField!
+    @IBOutlet weak var switchRememberMe: UISwitch!
     var overlay : UIView? // This should be a class variable
     //let homeNavigationController = UIViewController()
     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
@@ -25,6 +26,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.passwordEditText.delegate = self
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
+        getRememberMeValues()
         
     }
     @objc func dismissKeyboard() {
@@ -93,7 +95,39 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func loginButtonAction(_ sender: UIButton) {
         
         loginCheck()
+        let userDefault=UserDefaults.standard
+        if switchRememberMe.isOn{
+            if switchRememberMe.isOn{
+                
+                userDefault.set(passwordEditText.text, forKey: "password")
+                userDefault.set(emailEditText.text, forKey: "user")
+            }
+            else{
+                userDefault.removeObject(forKey: "password")
+                userDefault.removeObject(forKey: "user")
+            }
+
+            
+        }
         
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        print("HELLO-viewWillAppear")
+    }
+    
+    private func getRememberMeValues()
+    {
+        let userDefault = UserDefaults.standard
+        
+        if let email = userDefault.string(forKey: "userEmail")
+        {
+            emailEditText.text = email
+            
+            if let pwd = userDefault.string(forKey: "userPassword")
+            {
+                passwordEditText.text = pwd
+            }
+        }
     }
     
     
