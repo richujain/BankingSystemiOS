@@ -56,7 +56,7 @@
                                     <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Bank of Toronto" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xh9-L4-RxA">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Bank of Toronto" textAlignment="center" minimumFontSize="17" background="a" translatesAutoresizingMaskIntoConstraints="NO" id="xh9-L4-RxA">
                                 <rect key="frame" x="70" y="180" width="274" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.3599578323" green="0.38433802890000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -315,6 +315,7 @@
         <image name="AddUser" width="512" height="512"/>
         <image name="BankImage" width="649.5" height="649.5"/>
         <image name="EditUserInfo" width="512" height="512"/>
+        <image name="a" width="1648" height="1153"/>
         <image name="bank-logo" width="16" height="16"/>
     </resources>
 </document>
