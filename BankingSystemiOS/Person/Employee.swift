@@ -14,14 +14,18 @@ class Employee: Person {
     var password: String?
     var bankBranch: String?
     
-    
-    init() {
-        self.designation = String()
-        self.salary = Double()
-        self.username = String()
-        self.password = String()
-        self.bankBranch = String()
-        
-        super.init(personId: "0", personName: "0", address: "0", birthDate: "0", contactNumber: "0", emailId: "0")
+    init(personId: String, personName: String, address: String, birthDate: String, contactNumber: String, emailId: String,designation: String,salary: Double,username: String,password: String,bankBranch: String) {
+        self.designation  = designation
+        self.salary = salary
+        self.username = username
+        self.password = password
+        self.bankBranch = bankBranch
+        super.init(personId: personId, personName: personName, address: address, birthDate: birthDate, contactNumber: contactNumber, emailId: emailId)
+        self.personId = personId
+        self.personName =  personName
+        self.address = address
+        self.birthDate = birthDate
+        self.contactNumber = contactNumber
+        self.emailId = emailId
     }
 }
