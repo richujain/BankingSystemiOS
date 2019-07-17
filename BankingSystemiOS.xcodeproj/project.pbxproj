@@ -20,10 +20,10 @@
 		63A30DA122DF8140009ED92E /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A30DA022DF8140009ED92E /* Person.swift */; };
 		63A30DA422DF81DD009ED92E /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A30DA322DF81DD009ED92E /* Employee.swift */; };
 		63A30DA622DF83A1009ED92E /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A30DA522DF83A1009ED92E /* Customer.swift */; };
-		63A30DA822DF84E0009ED92E /* CreateBankAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A30DA722DF84E0009ED92E /* CreateBankAccountViewController.swift */; };
 		63A30DAA22DF8ACE009ED92E /* BankAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A30DA922DF8ACE009ED92E /* BankAccount.swift */; };
 		63A30DAC22DF8B5D009ED92E /* SavingsAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A30DAB22DF8B5D009ED92E /* SavingsAccount.swift */; };
 		63A30DAE22DF8B67009ED92E /* CurrentAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A30DAD22DF8B67009ED92E /* CurrentAccount.swift */; };
+		63A30DB222DFA877009ED92E /* CreateBankAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A30DB122DFA877009ED92E /* CreateBankAccountViewController.swift */; };
 		AEF2323E3DC0C8D7B9457B01 /* Pods_BankingSystemiOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EC22E46BB000DA88FF0EE26 /* Pods_BankingSystemiOSTests.framework */; };
 		CF22399A9DD7550D4150E727 /* Pods_BankingSystemiOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 670492EDFCBAB655569A5E98 /* Pods_BankingSystemiOSUITests.framework */; };
 /* End PBXBuildFile section */
@@ -68,10 +68,10 @@
 		63A30DA022DF8140009ED92E /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		63A30DA322DF81DD009ED92E /* Employee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
 		63A30DA522DF83A1009ED92E /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
-		63A30DA722DF84E0009ED92E /* CreateBankAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBankAccountViewController.swift; sourceTree = "<group>"; };
 		63A30DA922DF8ACE009ED92E /* BankAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAccount.swift; sourceTree = "<group>"; };
 		63A30DAB22DF8B5D009ED92E /* SavingsAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsAccount.swift; sourceTree = "<group>"; };
 		63A30DAD22DF8B67009ED92E /* CurrentAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentAccount.swift; sourceTree = "<group>"; };
+		63A30DB122DFA877009ED92E /* CreateBankAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBankAccountViewController.swift; sourceTree = "<group>"; };
 		670492EDFCBAB655569A5E98 /* Pods_BankingSystemiOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BankingSystemiOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		739F5F77C60FBE4083827A64 /* Pods-BankingSystemiOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankingSystemiOSTests.debug.xcconfig"; path = "Target Support Files/Pods-BankingSystemiOSTests/Pods-BankingSystemiOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A251B2A5F6616A69CFEAD18A /* Pods-BankingSystemiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankingSystemiOS.release.xcconfig"; path = "Target Support Files/Pods-BankingSystemiOS/Pods-BankingSystemiOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -135,8 +135,8 @@
 				63A30DA222DF819B009ED92E /* Person */,
 				6339709922CEB93900A62681 /* GoogleService-Info.plist */,
 				0943164222CA8FA100ED0F7B /* AppDelegate.swift */,
+				63A30DB122DFA877009ED92E /* CreateBankAccountViewController.swift */,
 				090FACFC22D45C7700337E51 /* EmployeeHomeTVC.swift */,
-				63A30DA722DF84E0009ED92E /* CreateBankAccountViewController.swift */,
 				0943164422CA8FA100ED0F7B /* LoginViewController.swift */,
 				0943164622CA8FA100ED0F7B /* Main.storyboard */,
 				0943164922CA8FA300ED0F7B /* Assets.xcassets */,
@@ -426,7 +426,7 @@
 				0943164322CA8FA100ED0F7B /* AppDelegate.swift in Sources */,
 				63A30DA122DF8140009ED92E /* Person.swift in Sources */,
 				63A30DA622DF83A1009ED92E /* Customer.swift in Sources */,
-				63A30DA822DF84E0009ED92E /* CreateBankAccountViewController.swift in Sources */,
+				63A30DB222DFA877009ED92E /* CreateBankAccountViewController.swift in Sources */,
 				63A30DAC22DF8B5D009ED92E /* SavingsAccount.swift in Sources */,
 				63A30DAA22DF8ACE009ED92E /* BankAccount.swift in Sources */,
 				63A30DA422DF81DD009ED92E /* Employee.swift in Sources */,

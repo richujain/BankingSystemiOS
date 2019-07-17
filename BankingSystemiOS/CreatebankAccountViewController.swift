@@ -1,5 +1,5 @@
 //
-//  AddUserViewController.swift
+//  CreateBankAccountViewController.swift
 //  BankingSystemiOS
 //
 //  Created by Ashish on 2019-07-17.
@@ -9,30 +9,14 @@
 import UIKit
 
 class CreateBankAccountViewController: UIViewController {
-    
-    @IBOutlet weak var txtCustomerName: UITextField!
-    @IBOutlet weak var txtCutomerAddress: UITextField!
-    @IBOutlet weak var txtBirthDate: UITextField!
-    @IBOutlet weak var txtContactNumber: UITextField!
-    @IBOutlet weak var txtEmailId: UITextField!
-    @IBOutlet weak var txtAccountType: UITextField!
-    @IBOutlet weak var txtCustomerAccountBalance: UITextField!
-    @IBOutlet weak var txtBankBranch: UITextField!
-    @IBOutlet weak var txtPhotoAddressProofId: UITextField!
-    var toolBar = UIToolbar()
-    var picker  = UIDatePicker()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func txtBirthDateOnClick(_ sender: UITextField) {
-        
-    }
-    @IBAction func btnCreateBankAccount(_ sender: Any) {
-    }
-    
+
     /*
     // MARK: - Navigation
 
