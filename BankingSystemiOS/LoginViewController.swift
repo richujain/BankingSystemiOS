@@ -20,10 +20,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
             
-            let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+            /*let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
             backgroundImage.image = UIImage(named: "a")
         backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
-            self.view.insertSubview(backgroundImage, at: 0)
+            self.view.insertSubview(backgroundImage, at: 0)*/
 
         super.viewDidLoad()
         // Do any additional setup after loading the view.

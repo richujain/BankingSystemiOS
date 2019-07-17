@@ -48,7 +48,7 @@ class EmployeeHomeTVC: UITableViewController {
         }
         else if indexPath.section == 0 && indexPath.row == 1 {
             print("Modify User")
-        } else if indexPath.section == 2 && indexPath.row == 1{
+        } else if indexPath.section == 2 && indexPath.row == 0{
             let firebaseAuth = Auth.auth()
             do {
                 try firebaseAuth.signOut()
