@@ -12,6 +12,7 @@ import FirebaseAuth
 class EmployeeHomeTVC: UITableViewController {
 
     @IBOutlet var employeeActivities: UITableView!
+    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController!.navigationBar.isHidden = true;
@@ -44,7 +45,8 @@ class EmployeeHomeTVC: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 && indexPath.row == 0{
-            print("Add user")
+            let resultViewController = self.storyBoard.instantiateViewController(withIdentifier: "CreateAccountSB") as! CreateBankAccountViewController
+            self.navigationController?.pushViewController(resultViewController, animated: true)
         }
         else if indexPath.section == 0 && indexPath.row == 1 {
             print("Modify User")

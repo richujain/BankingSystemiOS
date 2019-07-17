@@ -14,10 +14,9 @@ class CurrentAccount : BankAccount{
     var interestRate: Double?
     var insufficientFundCharges: Double?;
     var  minimumBalance: Double?
-    
     init(accountNumber: String,accountType: String,bankBranch:String, accountBalance: Double,personId: String,withdrawlLimit: Double,transactionCharges: Double,interestRate: Double,insufficientFundCharges: Double,minimumBalance: Double) {
+        super.init(accountNumber: accountNumber,accountType: accountType,bankBranch: bankBranch,accountBalance: accountBalance)
         self.personId = personId
-        super.init(accountNumber: String,accountType: String,bankBranch: String,accountBalance: Double)
         self.withdrawalLimit = withdrawlLimit
         self.transactionCharges = transactionCharges
         self.interestRate = interestRate

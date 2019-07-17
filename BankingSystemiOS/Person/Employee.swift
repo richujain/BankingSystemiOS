@@ -15,12 +15,12 @@ class Employee: Person {
     var bankBranch: String?
     
     init(personId: String, personName: String, address: String, birthDate: String, contactNumber: String, emailId: String,designation: String,salary: Double,username: String,password: String,bankBranch: String) {
+        super.init(personId: personId, personName: personName, address: address, birthDate: birthDate, contactNumber: contactNumber, emailId: emailId)
         self.designation  = designation
         self.salary = salary
         self.username = username
         self.password = password
         self.bankBranch = bankBranch
-        super.init(personId: personId, personName: personName, address: address, birthDate: birthDate, contactNumber: contactNumber, emailId: emailId)
         self.personId = personId
         self.personName =  personName
         self.address = address

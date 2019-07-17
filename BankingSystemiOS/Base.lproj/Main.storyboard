@@ -259,7 +259,7 @@
         <!--Create Bank Account View Controller-->
         <scene sceneID="juf-TF-YA2">
             <objects>
-                <viewController id="EZK-C0-DNE" customClass="CreateBankAccountViewController" customModule="BankingSystemiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateAccountSB" id="EZK-C0-DNE" customClass="CreateBankAccountViewController" customModule="BankingSystemiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h7u-ap-2J8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -291,6 +291,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="txtBirthDateOnClick:" destination="EZK-C0-DNE" eventType="editingDidEnd" id="xoF-kS-6Ky"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contact Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0HY-wc-S4y">
                                 <rect key="frame" x="20" y="318" width="374" height="30"/>
@@ -307,7 +310,36 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type of Bank Account" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A4Y-dr-Atq">
-                                <rect key="frame" x="20" y="422" width="374" height="30"/>
+                                <rect key="frame" x="20" y="480" width="374" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Bank Branch" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qKM-Zl-xfq">
+                                <rect key="frame" x="20" y="533" width="374" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Account Balance" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CJx-p9-aAL">
+                                <rect key="frame" x="20" y="586" width="374" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p4F-qY-qqF">
+                                <rect key="frame" x="20" y="641" width="374" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Create Bank Account"/>
+                                <connections>
+                                    <action selector="btnCreateBankAccount:" destination="EZK-C0-DNE" eventType="touchUpInside" id="edh-J6-AuS"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Photo Address ID Proof Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4VS-Yc-gU7">
+                                <rect key="frame" x="20" y="426" width="374" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -317,6 +349,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="y5G-Yw-PeX"/>
                     </view>
+                    <connections>
+                        <outlet property="txtAccountType" destination="A4Y-dr-Atq" id="FIw-av-ZUF"/>
+                        <outlet property="txtBankBranch" destination="qKM-Zl-xfq" id="8Pk-62-eSu"/>
+                        <outlet property="txtBirthDate" destination="WOX-dT-1gY" id="TPH-Ka-zFr"/>
+                        <outlet property="txtContactNumber" destination="0HY-wc-S4y" id="MJQ-zZ-Ggv"/>
+                        <outlet property="txtCustomerAccountBalance" destination="CJx-p9-aAL" id="Gje-zz-Xcr"/>
+                        <outlet property="txtCustomerName" destination="G9G-cG-XOj" id="feZ-C6-SNV"/>
+                        <outlet property="txtCutomerAddress" destination="Aj2-IM-Vud" id="cIv-AL-3Sh"/>
+                        <outlet property="txtEmailId" destination="tyb-0E-qsI" id="Ouz-Hx-hll"/>
+                        <outlet property="txtPhotoAddressProofId" destination="4VS-Yc-gU7" id="hvk-E2-dn1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="evS-Od-J2R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
