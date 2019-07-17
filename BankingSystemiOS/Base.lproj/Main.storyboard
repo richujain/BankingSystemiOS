@@ -256,10 +256,10 @@
             </objects>
             <point key="canvasLocation" x="1746" y="136"/>
         </scene>
-        <!--Create Bank Account View Controller-->
+        <!--Create Bank AccountVC-->
         <scene sceneID="juf-TF-YA2">
             <objects>
-                <viewController storyboardIdentifier="CreateAccountSB" id="EZK-C0-DNE" customClass="CreateBankAccountViewController" customModule="BankingSystemiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateAccountSB" id="EZK-C0-DNE" customClass="CreateBankAccountVC" customModule="BankingSystemiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h7u-ap-2J8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

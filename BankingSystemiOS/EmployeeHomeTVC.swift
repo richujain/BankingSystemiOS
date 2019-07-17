@@ -45,7 +45,7 @@ class EmployeeHomeTVC: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 && indexPath.row == 0{
-            let resultViewController = self.storyBoard.instantiateViewController(withIdentifier: "CreateAccountSB") as! CreateBankAccountViewController
+            let resultViewController = self.storyBoard.instantiateViewController(withIdentifier: "CreateAccountSB") as! CreateBankAccountVC
             self.navigationController?.pushViewController(resultViewController, animated: true)
         }
         else if indexPath.section == 0 && indexPath.row == 1 {
