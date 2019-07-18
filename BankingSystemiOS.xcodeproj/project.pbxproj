@@ -15,6 +15,7 @@
 		0943165822CA8FA300ED0F7B /* BankingSystemiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0943165722CA8FA300ED0F7B /* BankingSystemiOSTests.swift */; };
 		0943166322CA8FA300ED0F7B /* BankingSystemiOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0943166222CA8FA300ED0F7B /* BankingSystemiOSUITests.swift */; };
 		37115CFD3DDE1900E7EDE14E /* Pods_BankingSystemiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B08A29C33437E96DE2122DAB /* Pods_BankingSystemiOS.framework */; };
+		6012C32A22E0E85000548DCD /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6012C32922E0E85000548DCD /* Validation.swift */; };
 		6339709A22CEB93A00A62681 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6339709922CEB93900A62681 /* GoogleService-Info.plist */; };
 		63A30DA122DF8140009ED92E /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A30DA022DF8140009ED92E /* Person.swift */; };
 		63A30DA422DF81DD009ED92E /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A30DA322DF81DD009ED92E /* Employee.swift */; };
@@ -63,6 +64,7 @@
 		2E148ABFE28295EC6656C9D5 /* Pods-BankingSystemiOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankingSystemiOSUITests.release.xcconfig"; path = "Target Support Files/Pods-BankingSystemiOSUITests/Pods-BankingSystemiOSUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2EC22E46BB000DA88FF0EE26 /* Pods_BankingSystemiOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BankingSystemiOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DFAFE2D7D0A58107F52B6AA /* Pods-BankingSystemiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankingSystemiOS.debug.xcconfig"; path = "Target Support Files/Pods-BankingSystemiOS/Pods-BankingSystemiOS.debug.xcconfig"; sourceTree = "<group>"; };
+		6012C32922E0E85000548DCD /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		6339709922CEB93900A62681 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		63A30DA022DF8140009ED92E /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		63A30DA322DF81DD009ED92E /* Employee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				090FACFC22D45C7700337E51 /* EmployeeHomeTVC.swift */,
 				63A30DBF22DFAC27009ED92E /* CreateBankAccountVC.swift */,
 				0943164422CA8FA100ED0F7B /* LoginViewController.swift */,
+				6012C32922E0E85000548DCD /* Validation.swift */,
 				0943164622CA8FA100ED0F7B /* Main.storyboard */,
 				0943164922CA8FA300ED0F7B /* Assets.xcassets */,
 				0943164B22CA8FA300ED0F7B /* LaunchScreen.storyboard */,
@@ -424,6 +427,7 @@
 			files = (
 				0943164522CA8FA100ED0F7B /* LoginViewController.swift in Sources */,
 				63A30DA122DF8140009ED92E /* Person.swift in Sources */,
+				6012C32A22E0E85000548DCD /* Validation.swift in Sources */,
 				63A30DA622DF83A1009ED92E /* Customer.swift in Sources */,
 				63A30DAC22DF8B5D009ED92E /* SavingsAccount.swift in Sources */,
 				63A30DC022DFAC27009ED92E /* CreateBankAccountVC.swift in Sources */,
