@@ -66,8 +66,18 @@ class CreateBankAccountVC: UIViewController {
     }
     //---------------
     @IBAction func btnCreateBankAccount(_ sender: Any) {
-        //let personId: Int = arc4random()
-        self.ref.child("customers").child("456").child("address").setValue(txtCutomerAddress.text)
+        let personId: Int = Int(arc4random())
+        self.ref.child("customers").child(String(personId)).child("name").setValue(txtCustomerName.text)
+        self.ref.child("customers").child(String(personId)).child("address").setValue(txtCutomerAddress.text)
+        self.ref.child("customers").child(String(personId)).child("birthdate").setValue(txtBirthDate.text)
+        self.ref.child("customers").child(String(personId)).child("contactnumber").setValue(txtContactNumber.text)
+        self.ref.child("customers").child(String(personId)).child("emailid").setValue(txtEmailId.text)
+    self.ref.child("customers").child(String(personId)).child("photoaddressproofid").setValue(txtPhotoAddressProofId.text)
+       let accountNumber: Int = Int(arc4random())
+        self.ref.child("bank").child(txtAccountType.text!).child(String(personId)).child("accountnumber").setValue(String(accountNumber))
+        self.ref.child("bank").child(txtAccountType.text!).child(String(personId)).child("bankbranch").setValue(txtBankBranch.text)
+        self.ref.child("bank").child(txtAccountType.text!).child(String(personId)).child("accountbalance").setValue(txtCustomerAccountBalance.text)
+
     }
     
     /*
