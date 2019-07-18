@@ -33,7 +33,15 @@ class EmployeeHomeTVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        if section == 0{
+            return 2
+        }
+        else if section == 1{
+            return 3
+        }
+        else{
+            return 1
+        }
     }
     func dismissViewControllers() {
         
@@ -49,7 +57,9 @@ class EmployeeHomeTVC: UITableViewController {
             self.navigationController?.pushViewController(resultViewController, animated: true)
         }
         else if indexPath.section == 0 && indexPath.row == 1 {
-            print("Modify User")
+            let resultViewController = self.storyBoard.instantiateViewController(withIdentifier: "CreateAccountSB") as! CreateBankAccountVC
+            self.navigationController?.pushViewController(resultViewController, animated: true)
+            
         } else if indexPath.section == 2 && indexPath.row == 0{
             let firebaseAuth = Auth.auth()
             do {

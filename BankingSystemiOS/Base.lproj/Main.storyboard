@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="08i-Ru-5W2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -86,7 +86,7 @@
                         <outlet property="loginButton" destination="9Pp-UO-NfD" id="Dc9-Ax-O5x"/>
                         <outlet property="passwordEditText" destination="5ky-Dy-oum" id="dRe-Ht-yN9"/>
                         <outlet property="switchRememberMe" destination="tRV-gb-iAe" id="Hha-YP-gY9"/>
-                        <segue destination="p4h-vI-eaV" kind="show" id="JlQ-F1-gUh"/>
+                        <segue destination="KD3-b9-Tti" kind="show" identifier="EmployeeHomeSB" id="fWp-kl-m61"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -133,7 +133,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Edit User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KK5-oZ-929">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="View /Edit User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KK5-oZ-929">
                                                     <rect key="frame" x="79" y="0.0" width="315" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -247,6 +247,7 @@
                             <outlet property="delegate" destination="p4h-vI-eaV" id="pfF-5u-bpW"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="XSl-cg-IG4"/>
                     <connections>
                         <outlet property="employeeActivities" destination="J1Q-e7-dyc" id="Fsf-N4-e6D"/>
                         <segue destination="EZK-C0-DNE" kind="show" id="k19-ih-KKP"/>
@@ -254,7 +255,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tZ3-PK-xBt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1746" y="136"/>
+            <point key="canvasLocation" x="2655.072463768116" y="135.9375"/>
         </scene>
         <!--Create Bank AccountVC-->
         <scene sceneID="juf-TF-YA2">
@@ -374,7 +375,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="evS-Od-J2R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2460.8695652173915" y="135.9375"/>
+            <point key="canvasLocation" x="3371.0144927536235" y="135.9375"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="JxH-kt-9Mi">
@@ -420,22 +421,22 @@
             <point key="canvasLocation" x="2518.840579710145" y="832.36607142857144"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="l02-CI-uPL">
+        <scene sceneID="dcO-7F-PaH">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="08i-Ru-5W2" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KD3-b9-Tti" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cvx-uU-5sD">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Lwg-v7-8Cx">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="VSd-h8-3Go"/>
+                        <segue destination="p4h-vI-eaV" kind="relationship" relationship="rootViewController" id="IJ6-3M-Ago"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nWp-sT-8ND" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UQe-rw-nzy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131.8840579710145" y="137.94642857142856"/>
+            <point key="canvasLocation" x="1744.9275362318842" y="135.9375"/>
         </scene>
     </scenes>
     <resources>

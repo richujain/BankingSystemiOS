@@ -27,7 +27,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.navigationController!.navigationBar.isHidden = true;
+        //self.navigationController!.navigationBar.isHidden = true;
         self.emailEditText.delegate = self
         self.passwordEditText.delegate = self
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
@@ -58,9 +58,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 if let userID = Auth.auth().currentUser?.uid{
                     print("User ID is \(userID)")
                     if !userID.isEmpty{
-                        self!.overlay?.removeFromSuperview()
+                        /*self!.overlay?.removeFromSuperview()
                         let resultViewController = self!.storyBoard.instantiateViewController(withIdentifier: "EmployeeHomeSB") as! EmployeeHomeTVC
-                        self?.navigationController?.pushViewController(resultViewController, animated: true)
+                        self?.navigationController?.pushViewController(resultViewController, animated: true)*/
+                        self?.performSegue(withIdentifier: "EmployeeHomeSB", sender: self)
                     }
                 }
                 else{
