@@ -10,19 +10,9 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 class CreateBankAccountVC: UIViewController {
+    var accountType=String()
     
-    @IBAction func SegmentAccType(_ sender: UISegmentedControl) {
-        switch SegmentedControl.selectedSegmentIndex {
-        case 0:
-            print("Current")
-        case 1:
-            print("Savings")
-        default:
-            print("select atleast one account Type")
-        }
-        
-        
-    }
+    
     @IBOutlet weak var SegmentedControl: UISegmentedControl!
     @IBOutlet weak var txtCustomerName: UITextField!
     @IBOutlet weak var txtCutomerAddress: UITextField!
@@ -83,12 +73,74 @@ class CreateBankAccountVC: UIViewController {
         self.ref.child("customers").child(String(personId)).child("name").setValue(txtCustomerName.text)
         self.ref.child("customers").child(String(personId)).child("address").setValue(txtCutomerAddress.text)
         self.ref.child("customers").child(String(personId)).child("birthdate").setValue(txtBirthDate.text)
-        self.ref.child("customers").child(String(personId)).child("contactnumber").setValue(txtContactNumber.text)
-        self.ref.child("customers").child(String(personId)).child("emailid").setValue(txtEmailId.text)
+        
+        var contactNum=txtContactNumber.text
+        if !contactNum?.isEmpty{
+                if(contactNum?.isvalidPhoneNumber()){
+                    self.ref.child("customers").child(String(personId)).child("contactnumber").setValue(txtContactNumber.text)
+                }
+                else {
+                    print("Phone Number Validation Failed! Try Again")
+                    let alert=UIAlertController(title: "Error", message: "Please Enter Valid ContactNumber", preferredStyle: UIAlertController.Style.alert)
+                    let actionok=UIAlertAction(title: "ok", style: .default, handler: nil)
+                    alert.addAction(actionok)
+                    self.present(alert,animated: true,completion: nil)
+                }
+        }
+        else{let alert=UIAlertController(title: "Error", message: "Contact Number Field is Empty ", preferredStyle: UIAlertController.Style.alert)
+            let actionok=UIAlertAction(title: "ok", style: .default, handler: nil)
+            alert.addAction(actionok)
+            self.present(alert,animated: true,completion: nil)
+            
+            
+        }
+        var emailId=txtEmailId.text
+        if !contactNum?.isEmpty{
+            if(emailId?.isValidEmail()){
+                self.ref.child("customers").child(String(personId)).child("emailid").setValue(txtEmailId.text)
+            }
+            else {
+                print("Email Id Validation! Try Again")
+                let alert=UIAlertController(title: "Error", message: "Please Enter Valid EmailId", preferredStyle: UIAlertController.Style.alert)
+                let actionok=UIAlertAction(title: "ok", style: .default, handler: nil)
+                alert.addAction(actionok)
+                self.present(alert,animated: true,completion: nil)
+            }
+        }
+        else{let alert=UIAlertController(title: "Error", message: "EmailId  Field is Empty ", preferredStyle: UIAlertController.Style.alert)
+            let actionok=UIAlertAction(title: "ok", style: .default, handler: nil)
+            alert.addAction(actionok)
+            self.present(alert,animated: true,completion: nil)
+            
+            
+        }
+            
+        
+        
+        
     self.ref.child("customers").child(String(personId)).child("photoaddressproofid").setValue(txtPhotoAddressProofId.text)
         let accountNumber: Int = Int(arc4random())
+        @IBAction func SegmentAccType(_ sender: UISegmentedControl) {
+            switch SegmentedControl.selectedSegmentIndex {
+            case 0:
+                print("Current")
+                accountType="current"
+            case 1:
+                print("Savings")
+                accountType="savings"
+            default:
+                print("select atleast one account Type")
+                let alert=UIAlertController(title: "Error", message: "Please Select Atleast One Account Type", preferredStyle: UIAlertController.Style.alert)
+                let actionok=UIAlertAction(title: "ok", style: .default, handler: nil)
+                alert.addAction(actionok)
+                self.present(alert,animated: true,completion: nil)
+                
+            }
+            
+            
+        }
     self.ref.child("bank").child(txtAccountType.text!).child(String(personId)).child("accountnumber").setValue(String(accountNumber))
-    self.ref.child("bank").child(txtAccountType.text!).child(String(personId)).child("bankbranch").setValue(txtBankBranch.text)
+    self.ref.child("bank").child(accountType!).child(String(personId)).child("bankbranch").setValue(txtBankBranch.text)
     self.ref.child("bank").child(txtAccountType.text!).child(String(personId)).child("accountbalance").setValue(txtCustomerAccountBalance.text)
 
     }
