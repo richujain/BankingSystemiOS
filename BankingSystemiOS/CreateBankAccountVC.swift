@@ -73,10 +73,10 @@ class CreateBankAccountVC: UIViewController {
         self.ref.child("customers").child(String(personId)).child("contactnumber").setValue(txtContactNumber.text)
         self.ref.child("customers").child(String(personId)).child("emailid").setValue(txtEmailId.text)
     self.ref.child("customers").child(String(personId)).child("photoaddressproofid").setValue(txtPhotoAddressProofId.text)
-       let accountNumber: Int = Int(arc4random())
-        self.ref.child("bank").child(txtAccountType.text!).child(String(personId)).child("accountnumber").setValue(String(accountNumber))
-        self.ref.child("bank").child(txtAccountType.text!).child(String(personId)).child("bankbranch").setValue(txtBankBranch.text)
-        self.ref.child("bank").child(txtAccountType.text!).child(String(personId)).child("accountbalance").setValue(txtCustomerAccountBalance.text)
+        let accountNumber: Int = Int(arc4random())
+    self.ref.child("bank").child(txtAccountType.text!).child(String(personId)).child("accountnumber").setValue(String(accountNumber))
+    self.ref.child("bank").child(txtAccountType.text!).child(String(personId)).child("bankbranch").setValue(txtBankBranch.text)
+    self.ref.child("bank").child(txtAccountType.text!).child(String(personId)).child("accountbalance").setValue(txtCustomerAccountBalance.text)
 
     }
     
