@@ -11,6 +11,19 @@ import Firebase
 import FirebaseDatabase
 class CreateBankAccountVC: UIViewController {
     
+    @IBAction func SegmentAccType(_ sender: UISegmentedControl) {
+        switch SegmentedControl.selectedSegmentIndex {
+        case 0:
+            print("Current")
+        case 1:
+            print("Savings")
+        default:
+            print("select atleast one account Type")
+        }
+        
+        
+    }
+    @IBOutlet weak var SegmentedControl: UISegmentedControl!
     @IBOutlet weak var txtCustomerName: UITextField!
     @IBOutlet weak var txtCutomerAddress: UITextField!
     @IBOutlet weak var txtBirthDate: UITextField!
