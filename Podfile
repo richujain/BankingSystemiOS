@@ -9,6 +9,7 @@ target 'BankingSystemiOS' do
 pod 'Firebase/Analytics'
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
+pod 'Firebase/Database'
   target 'BankingSystemiOSTests' do
     inherit! :search_paths
     # Pods for testing
