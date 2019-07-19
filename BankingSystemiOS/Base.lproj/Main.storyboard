@@ -466,10 +466,10 @@
             </objects>
             <point key="canvasLocation" x="3371.0144927536235" y="135.9375"/>
         </scene>
-        <!--View Controller-->
+        <!--User Info View Controller-->
         <scene sceneID="cM9-Pb-52A">
             <objects>
-                <viewController id="PB1-SG-k6u" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserInfoVC" id="PB1-SG-k6u" customClass="UserInfoViewController" customModule="BankingSystemiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hew-tb-ymU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -550,6 +550,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="nGw-mb-uqC"/>
                     </view>
+                    <connections>
+                        <outlet property="btnDone" destination="Caw-Ad-HPB" id="M7u-nc-CpD"/>
+                        <outlet property="lblAccountType" destination="HyH-v4-G9v" id="Jaw-lo-DMG"/>
+                        <outlet property="txtAddress" destination="txM-ce-FAB" id="upQ-Wn-WJk"/>
+                        <outlet property="txtBankBranch" destination="n0F-uo-Au6" id="RjA-Kq-Av2"/>
+                        <outlet property="txtBirthDate" destination="Gix-Rc-bEK" id="326-Jx-a6l"/>
+                        <outlet property="txtContactNumber" destination="bDd-bt-wMs" id="Buf-cC-yEV"/>
+                        <outlet property="txtCustomerName" destination="YcZ-vk-qzz" id="ytA-aP-SqA"/>
+                        <outlet property="txtEmailId" destination="jub-uV-jZf" id="0mP-gj-aN5"/>
+                        <outlet property="txtPhotoAddressIdProof" destination="kAM-CC-dXC" id="AvG-PR-W4F"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nli-tj-hVj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

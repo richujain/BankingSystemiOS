@@ -8,10 +8,24 @@
 
 import UIKit
 
-class ViewCustomerViewController: UIViewController {
+class UserInfoViewController: UIViewController {
+   
+    @IBOutlet weak var txtCustomerName: UITextField!
+    @IBOutlet weak var txtAddress: UITextField!
+    @IBOutlet weak var txtContactNumber: UITextField!
+    @IBOutlet weak var txtEmailId: UITextField!
+    @IBOutlet weak var txtBirthDate: UITextField!
+    @IBOutlet weak var lblAccountType: UILabel!
+    @IBOutlet weak var btnDone: UIButton!
+    @IBOutlet weak var txtPhotoAddressIdProof: UITextField!
+    @IBOutlet weak var txtBankBranch: UITextField!
     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+    var personId: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(personId)
+        
         
         // Do any additional setup after loading the view.
     }
