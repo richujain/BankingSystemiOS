@@ -75,8 +75,8 @@ class CreateBankAccountVC: UIViewController {
         self.ref.child("customers").child(String(personId)).child("birthdate").setValue(txtBirthDate.text)
         
         var contactNum=txtContactNumber.text
-        if !contactNum?.isEmpty{
-                if(contactNum?.isvalidPhoneNumber()){
+        if !contactNum!.isEmpty{
+            if((contactNum?.isvalidPhoneNumber())!){
                     self.ref.child("customers").child(String(personId)).child("contactnumber").setValue(txtContactNumber.text)
                 }
                 else {
@@ -95,8 +95,8 @@ class CreateBankAccountVC: UIViewController {
             
         }
         var emailId=txtEmailId.text
-        if !contactNum?.isEmpty{
-            if(emailId?.isValidEmail()){
+        if !contactNum!.isEmpty{
+            if((emailId?.isValidEmail())!){
                 self.ref.child("customers").child(String(personId)).child("emailid").setValue(txtEmailId.text)
             }
             else {
@@ -120,7 +120,7 @@ class CreateBankAccountVC: UIViewController {
         
     self.ref.child("customers").child(String(personId)).child("photoaddressproofid").setValue(txtPhotoAddressProofId.text)
         let accountNumber: Int = Int(arc4random())
-        @IBAction func SegmentAccType(_ sender: UISegmentedControl) {
+        func SegmentAccType(_ sender: UISegmentedControl) {
             switch SegmentedControl.selectedSegmentIndex {
             case 0:
                 print("Current")
@@ -140,7 +140,7 @@ class CreateBankAccountVC: UIViewController {
             
         }
     self.ref.child("bank").child(txtAccountType.text!).child(String(personId)).child("accountnumber").setValue(String(accountNumber))
-    self.ref.child("bank").child(accountType!).child(String(personId)).child("bankbranch").setValue(txtBankBranch.text)
+        self.ref.child("bank").child(accountType).child(String(personId)).child("bankbranch").setValue(txtBankBranch.text)
     self.ref.child("bank").child(txtAccountType.text!).child(String(personId)).child("accountbalance").setValue(txtCustomerAccountBalance.text)
 
     }
