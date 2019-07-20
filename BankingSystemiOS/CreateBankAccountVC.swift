@@ -131,7 +131,7 @@ class CreateBankAccountVC: UIViewController {
                 alert.addAction(actionok)
                 self.present(alert,animated: true,completion: nil)
         }
-        let accountNumber: Int = Int(arc4random())
+        let accountNumber: Int = self.personId
         
         if flag == true{
             self.ref.child("customers").child(String(personId)).child("name").setValue(fullName)

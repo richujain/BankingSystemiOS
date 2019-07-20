@@ -11,6 +11,9 @@ import FirebaseDatabase
 
 class UserInfoViewController: UIViewController {
    
+    @IBOutlet weak var txtAccountNumber: UILabel!
+    @IBOutlet weak var txtAccountBalance: UILabel!
+    @IBOutlet weak var txtAccountType: UILabel!
     @IBOutlet weak var txtCustomerName: UITextField!
     @IBOutlet weak var txtAddress: UITextField!
     @IBOutlet weak var txtContactNumber: UITextField!
@@ -23,6 +26,9 @@ class UserInfoViewController: UIViewController {
     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
     var personId: String = ""
     var ref: DatabaseReference!
+    var flag:Int = 0
+    typealias completion = (_ isFinished:Bool) -> Void
+
     
     
     override func viewDidLoad() {
@@ -43,7 +49,7 @@ class UserInfoViewController: UIViewController {
             self.txtContactNumber.text = contactNumber
             self.txtEmailId.text = emailId
             self.txtBirthDate.text = birthDate
-            self.txtPhotoAddressIdProof.text = birthDate
+            self.txtPhotoAddressIdProof.text = photoAddressProofId
 
             
             //let user = User(username: username)
@@ -52,17 +58,72 @@ class UserInfoViewController: UIViewController {
         }) { (error) in
             print(error.localizedDescription)
         }
-        print("Account Type is \(getAccountType(ref: ref))")
+        //print("Account Type is \(getAccountType(ref: ref))")
+        getAccountType(ref: ref, completionHandler: { (isFinished) in
+            if isFinished {
+                print("Account Type is \(self.flag)")
+                
+            }
+        })
+        var accountType: String = {
+            if flag == 1{
+                return "savings"
+            }
+            else{
+              return "current"
+            }
+        }
+        self.ref.child("bank").child(accountType).child(self.personId).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            self.txtAccountNumber = "Account Number : \(self.personId)"
+            self.txtAccountType = "Account Type : \(accountType)"
+            let accountBalance = value?["accountbalance"] as? String ?? ""
+            self.txtAccountBalance.text = "Account Balance : \(accountBalance)"
+            
+            
+            //let user = User(username: username)
+            
+            // ...
+        }) { (error) in
+            print(error.localizedDescription)
+        }
         
         
         
         // Do any additional setup after loading the view.
     }
-    func getAccountType(ref: DatabaseReference) -> String {
+    func getAccountType(ref: DatabaseReference, completionHandler: @escaping completion) {
         print("Person ID is \(self.personId)")
+        flag = 0
+        
         ref.child("bank").child("savings").child(personId).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
-            return "savings"
+            let value = snapshot.value as? NSDictionary
+            var acc = "0"
+            acc = value?["accountnumber"] as? String ?? ""
+            if Int(acc) ?? 0 > 0{
+                self.flag = 1
+                //return "current"
+                completionHandler(true)
+            }
+            //let user = User(username: username)
+            
+            // ...
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        ref.child("bank").child("current").child(personId).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            var acc = "0"
+            acc = value?["accountnumber"] as? String ?? ""
+                if Int(acc) ?? 0 > 0{
+                    self.flag = 2
+                    //return "savings"
+                    completionHandler(true)
+                }
+            
             
             //let user = User(username: username)
             
@@ -70,17 +131,7 @@ class UserInfoViewController: UIViewController {
         }) { (error) in
             print(error.localizedDescription)
         }
-        ref.child("bank").child("savings").child(personId).observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            return "current"
-            
-            //let user = User(username: username)
-            
-            // ...
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-        return "null"
+        
     }
     
 
