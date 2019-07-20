@@ -528,6 +528,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="btnDone:" destination="PB1-SG-k6u" eventType="touchUpInside" id="Jg9-aW-uus"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Birth Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gix-Rc-bEK">
                                 <rect key="frame" x="20" y="408" width="374" height="30"/>
@@ -572,7 +575,6 @@
                         <viewLayoutGuide key="safeArea" id="nGw-mb-uqC"/>
                     </view>
                     <connections>
-                        <outlet property="btnDone" destination="Caw-Ad-HPB" id="M7u-nc-CpD"/>
                         <outlet property="lblAccountType" destination="HyH-v4-G9v" id="Jaw-lo-DMG"/>
                         <outlet property="txtAccountBalance" destination="UfZ-dH-tYs" id="bz1-sp-HX8"/>
                         <outlet property="txtAccountNumber" destination="jpV-ZQ-Xbm" id="KpO-T5-fqo"/>
@@ -584,6 +586,7 @@
                         <outlet property="txtCustomerName" destination="YcZ-vk-qzz" id="ytA-aP-SqA"/>
                         <outlet property="txtEmailId" destination="jub-uV-jZf" id="0mP-gj-aN5"/>
                         <outlet property="txtPhotoAddressIdProof" destination="kAM-CC-dXC" id="AvG-PR-W4F"/>
+                        <segue destination="p4h-vI-eaV" kind="show" identifier="UserInfoToEmployeeHome" id="AIM-PO-hi9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nli-tj-hVj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -666,4 +669,7 @@
         <image name="EditUserInfo" width="512" height="512"/>
         <image name="bank-logo" width="16" height="16"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="AIM-PO-hi9"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -20,7 +20,6 @@ class UserInfoViewController: UIViewController {
     @IBOutlet weak var txtEmailId: UITextField!
     @IBOutlet weak var txtBirthDate: UITextField!
     @IBOutlet weak var lblAccountType: UILabel!
-    @IBOutlet weak var btnDone: UIButton!
     @IBOutlet weak var txtPhotoAddressIdProof: UITextField!
     @IBOutlet weak var txtBankBranch: UITextField!
     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
@@ -146,4 +145,7 @@ class UserInfoViewController: UIViewController {
     }
     */
 
+    @IBAction func btnDone(_ sender: Any) {
+        self.performSegue(withIdentifier: "UserInfoToEmployeeHome", sender: self)
+    }
 }
