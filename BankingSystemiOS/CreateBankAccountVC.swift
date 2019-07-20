@@ -10,27 +10,23 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 class CreateBankAccountVC: UIViewController {
-    var accountType=String()
-    
-    
     @IBOutlet weak var SegmentedControl: UISegmentedControl!
     @IBOutlet weak var txtCustomerName: UITextField!
     @IBOutlet weak var txtCutomerAddress: UITextField!
     @IBOutlet weak var txtBirthDate: UITextField!
     @IBOutlet weak var txtContactNumber: UITextField!
     @IBOutlet weak var txtEmailId: UITextField!
-    @IBOutlet weak var txtAccountType: UITextField!
     @IBOutlet weak var txtCustomerAccountBalance: UITextField!
     @IBOutlet weak var txtBankBranch: UITextField!
     @IBOutlet weak var txtPhotoAddressProofId: UITextField!
     var toolBar = UIToolbar()
     var picker  = UIDatePicker()
     var ref: DatabaseReference!
-    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+    var accountType: String = ""
     var personId: Int = 0
 
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController!.navigationBar.isHidden = false;
@@ -39,9 +35,20 @@ class CreateBankAccountVC: UIViewController {
         
         // Do any additional setup after loading the view.
         self.ref = Database.database().reference()
-        
-        
     }
+    
+    @IBAction func segmentAccountType(_ sender: UISegmentedControl) {
+        switch SegmentedControl.selectedSegmentIndex{
+        case 0:
+            self.accountType="current"
+        case 1:
+            self.accountType="savings"
+        default:
+            break
+        }
+    }
+    
+    
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
@@ -71,88 +78,85 @@ class CreateBankAccountVC: UIViewController {
     }
     //---------------
     @IBAction func btnCreateBankAccount(_ sender: Any) {
+        
         self.personId = Int(arc4random())
-        
-        self.ref.child("customers").child(String(personId)).child("name").setValue(txtCustomerName.text)
-        self.ref.child("customers").child(String(personId)).child("address").setValue(txtCutomerAddress.text)
-        self.ref.child("customers").child(String(personId)).child("birthdate").setValue(txtBirthDate.text)
-        
-        var contactNum=txtContactNumber.text
-        if !contactNum!.isEmpty{
-            if((contactNum?.isvalidPhoneNumber())!){
-                    self.ref.child("customers").child(String(personId)).child("contactnumber").setValue(txtContactNumber.text)
-                }
-                else {
-                    print("Phone Number Validation Failed! Try Again")
-                    let alert=UIAlertController(title: "Error", message: "Please Enter Valid ContactNumber", preferredStyle: UIAlertController.Style.alert)
-                    let actionok=UIAlertAction(title: "ok", style: .default, handler: nil)
-                    alert.addAction(actionok)
-                    self.present(alert,animated: true,completion: nil)
-                }
+        let fullName=txtCustomerName.text
+        var flag: Bool = true
+        if fullName!.isEmpty{
+            flag = false
+            let alert=UIAlertController(title: "Error", message: "customer Name Should Not be Empty", preferredStyle: .alert)
+            let actionOk=UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(actionOk)
+            self.present(alert,animated: true,completion: nil)
         }
-        else{let alert=UIAlertController(title: "Error", message: "Contact Number Field is Empty ", preferredStyle: UIAlertController.Style.alert)
+        let address=txtCutomerAddress.text
+        if address!.isEmpty {
+            flag = false
+            let alert=UIAlertController(title: "Error", message: "Address is empty", preferredStyle: .alert)
+            let actionOk=UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(actionOk)
+            self.present(alert,animated: true,completion: nil)
+        }
+        let birthDate=txtBirthDate.text
+        if birthDate!.isEmpty{
+            flag = false
+            
+            let alert=UIAlertController(title: "Error", message: "please Select Birthdate", preferredStyle: .alert)
+            let actionOk=UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(actionOk)
+            self.present(alert,animated: true,completion: nil)
+            
+        }
+        
+        let contactNumber=txtContactNumber.text
+        if contactNumber!.isEmpty {
+            flag = false
+            print("Phone Number Validation Failed! Try Again")
+            let alert=UIAlertController(title: "Error", message: "Please Enter Valid ContactNumber", preferredStyle: UIAlertController.Style.alert)
             let actionok=UIAlertAction(title: "ok", style: .default, handler: nil)
             alert.addAction(actionok)
             self.present(alert,animated: true,completion: nil)
             
-            
         }
-        var emailId=txtEmailId.text
-        if !contactNum!.isEmpty{
-            if((emailId?.isValidEmail())!){
+        let emailId=txtEmailId.text
+        if emailId!.isEmpty{
+            /*if(emailId!.isValidEmail()){
                 self.ref.child("customers").child(String(personId)).child("emailid").setValue(txtEmailId.text)
             }
-            else {
+            else {*/
+                flag = false
                 print("Email Id Validation! Try Again")
-                let alert=UIAlertController(title: "Error", message: "Please Enter Valid EmailId", preferredStyle: UIAlertController.Style.alert)
+                let alert=UIAlertController(title: "Error", message: "Please Enter EmailId", preferredStyle: UIAlertController.Style.alert)
                 let actionok=UIAlertAction(title: "ok", style: .default, handler: nil)
                 alert.addAction(actionok)
                 self.present(alert,animated: true,completion: nil)
-            }
         }
-        else{
-            let alert=UIAlertController(title: "Error", message: "EmailId  Field is Empty ", preferredStyle: UIAlertController.Style.alert)
-            let actionok=UIAlertAction(title: "ok", style: .default, handler: nil)
-            alert.addAction(actionok)
-            self.present(alert,animated: true,completion: nil)
-            
-            
-        }
-            
-        
-        
-        
-    self.ref.child("customers").child(String(personId)).child("photoaddressproofid").setValue(txtPhotoAddressProofId.text)
         let accountNumber: Int = Int(arc4random())
-        func SegmentAccType(_ sender: UISegmentedControl) {
-            switch SegmentedControl.selectedSegmentIndex {
-            case 0:
-                print("Current")
-                accountType="current"
-            case 1:
-                print("Savings")
-                accountType="savings"
-            default:
-                print("select atleast one account Type")
-                let alert=UIAlertController(title: "Error", message: "Please Select Atleast One Account Type", preferredStyle: UIAlertController.Style.alert)
-                let actionok=UIAlertAction(title: "ok", style: .default, handler: nil)
-                alert.addAction(actionok)
-                self.present(alert,animated: true,completion: nil)
-                
-            }
+        
+        if flag == true{
+            self.ref.child("customers").child(String(personId)).child("name").setValue(fullName)
+            self.ref.child("customers").child(String(personId)).child("address").setValue(address)
+            self.ref.child("customers").child(String(personId)).child("birthdate").setValue(birthDate)
+            self.ref.child("customers").child(String(personId)).child("emailid").setValue(txtEmailId.text)
+            self.ref.child("customers").child(String(personId)).child("contactnumber").setValue(contactNumber)
+            self.ref.child("bank").child(accountType).child(String(personId)).child("accountnumber").setValue(String(accountNumber))
+            
+            self.ref.child("bank").child(accountType).child(String(personId)).child("bankbranch").setValue(txtBankBranch.text)
+            self.ref.child("bank").child(accountType).child(String(personId)).child("accountbalance").setValue(txtCustomerAccountBalance.text)
+            self.ref.child("customers").child(String(personId)).child("photoaddressproofid").setValue(txtPhotoAddressProofId.text)
+            
+            self.performSegue(withIdentifier: "ViewUser", sender: self)
             
             
         }
-    self.ref.child("bank").child(txtAccountType.text!).child(String(personId)).child("accountnumber").setValue(String(accountNumber))
-        self.ref.child("bank").child(accountType).child(String(personId)).child("bankbranch").setValue(txtBankBranch.text)
-    self.ref.child("bank").child(txtAccountType.text!).child(String(personId)).child("accountbalance").setValue(txtCustomerAccountBalance.text)
-        
-        let resultViewController = self.storyBoard.instantiateViewController(withIdentifier: "UserInfoVC") as! UserInfoViewController
-        resultViewController.personId = String(self.personId)
-        self.navigationController?.pushViewController(resultViewController, animated: true)
-        
-
+    
+    
+}
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        var vc = segue.destination as! UserInfoViewController
+        vc.personId = String(self.personId)
     }
+
     
     /*
      // MARK: - Navigation

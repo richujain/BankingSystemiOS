@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class UserInfoViewController: UIViewController {
    
@@ -21,13 +22,65 @@ class UserInfoViewController: UIViewController {
     @IBOutlet weak var txtBankBranch: UITextField!
     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
     var personId: String = ""
+    var ref: DatabaseReference!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(personId)
+        ref = Database.database().reference()
+        self.ref.child("customers").child(self.personId).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            let customerName = value?["name"] as? String ?? ""
+            let address = value?["address"] as? String ?? ""
+            let emailId = value?["emailid"] as? String ?? ""
+            let birthDate = value?["birthdate"] as? String ?? ""
+            let photoAddressProofId = value?["photoaddressproofid"] as? String ?? ""
+            let contactNumber = value?["contactnumber"] as? String ?? ""
+
+            self.txtCustomerName.text = customerName
+            self.txtAddress.text = address
+            self.txtContactNumber.text = contactNumber
+            self.txtEmailId.text = emailId
+            self.txtBirthDate.text = birthDate
+            self.txtPhotoAddressIdProof.text = birthDate
+
+            
+            //let user = User(username: username)
+            
+            // ...
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        print("Account Type is \(getAccountType(ref: ref))")
+        
         
         
         // Do any additional setup after loading the view.
+    }
+    func getAccountType(ref: DatabaseReference) -> String {
+        print("Person ID is \(self.personId)")
+        ref.child("bank").child("savings").child(personId).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            return "savings"
+            
+            //let user = User(username: username)
+            
+            // ...
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        ref.child("bank").child("savings").child(personId).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            return "current"
+            
+            //let user = User(username: username)
+            
+            // ...
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        return "null"
     }
     
 

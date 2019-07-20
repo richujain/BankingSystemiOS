@@ -435,7 +435,7 @@
                                     <segment title="Savings"/>
                                 </segments>
                                 <connections>
-                                    <action selector="SegmentAccType:" destination="EZK-C0-DNE" eventType="valueChanged" id="vpI-Sg-gPa"/>
+                                    <action selector="segmentAccountType:" destination="EZK-C0-DNE" eventType="valueChanged" id="Oq9-D8-U13"/>
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VkD-0p-6Zu">
@@ -459,7 +459,7 @@
                         <outlet property="txtCutomerAddress" destination="Aj2-IM-Vud" id="cIv-AL-3Sh"/>
                         <outlet property="txtEmailId" destination="tyb-0E-qsI" id="Ouz-Hx-hll"/>
                         <outlet property="txtPhotoAddressProofId" destination="4VS-Yc-gU7" id="hvk-E2-dn1"/>
-                        <segue destination="PB1-SG-k6u" kind="show" id="iwa-0G-LhZ"/>
+                        <segue destination="PB1-SG-k6u" kind="show" identifier="ViewUser" id="IXe-yt-fa0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="evS-Od-J2R" userLabel="First Responder" sceneMemberID="firstResponder"/>
