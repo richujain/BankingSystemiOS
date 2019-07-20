@@ -33,6 +33,7 @@ class UserInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController!.navigationBar.isHidden = true;
         ref = Database.database().reference()
         self.ref.child("customers").child(self.personId).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
@@ -65,19 +66,19 @@ class UserInfoViewController: UIViewController {
                 
             }
         })
-        var accountType: String = {
-            if flag == 1{
-                return "savings"
-            }
-            else{
-              return "current"
-            }
+        
+        var accountType: String = ""
+        if flag == 1{
+            accountType = "savings"
+        }
+        else{
+            accountType = "current"
         }
         self.ref.child("bank").child(accountType).child(self.personId).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
-            self.txtAccountNumber = "Account Number : \(self.personId)"
-            self.txtAccountType = "Account Type : \(accountType)"
+            self.txtAccountNumber.text = "Account Number : \(self.personId)"
+            self.txtAccountType.text = "Account Type : \(accountType)"
             let accountBalance = value?["accountbalance"] as? String ?? ""
             self.txtAccountBalance.text = "Account Balance : \(accountBalance)"
             
