@@ -96,7 +96,7 @@
         <!--Deposit View Controller-->
         <scene sceneID="sMD-5b-kLj">
             <objects>
-                <viewController id="Ipb-Wf-K45" customClass="DepositViewController" customModule="BankingSystemiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DepositVC" id="Ipb-Wf-K45" customClass="DepositViewController" customModule="BankingSystemiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gw8-CB-M80">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
