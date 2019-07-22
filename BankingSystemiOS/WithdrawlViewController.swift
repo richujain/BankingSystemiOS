@@ -1,20 +1,21 @@
 //
-//  DepositViewController.swift
+//  WithdrawlViewController.swift
 //  BankingSystemiOS
 //
-//  Created by Pat Abhishek on 2019-07-21.
+//  Created by Pat Abhishek on 2019-07-22.
 //  Copyright © 2019 Richu Jain. All rights reserved.
 //
 
 import UIKit
 import FirebaseDatabase
 
-class DepositViewController: UIViewController {
+class WithdrawlViewController: UIViewController {
     @IBOutlet weak var txtAccountNumber: UITextField!
-    @IBOutlet weak var labelAccountHolder: UILabel!
+    
     @IBOutlet weak var btnDepositOutlet: UIButton!
-    @IBOutlet weak var labelContactNumber: UILabel!
     @IBOutlet weak var txtAmountToDeposit: UITextField!
+    @IBOutlet weak var labelContactNumber: UILabel!
+    @IBOutlet weak var labelAccountHolder: UILabel!
     typealias completion = (_ isFinished:Bool) -> Void
     var flag:Int = 0
     var ref: DatabaseReference!
@@ -23,7 +24,7 @@ class DepositViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         btnDepositOutlet.isHidden = true
         txtAmountToDeposit.isHidden = true
@@ -48,7 +49,7 @@ class DepositViewController: UIViewController {
         }) { (error) in
             print(error.localizedDescription)
         }
-       
+        
         ref.child("bank").child("current").child(self.accountNumber).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
@@ -70,71 +71,9 @@ class DepositViewController: UIViewController {
         
     }
     
-    @IBAction func btnDepositButton(_ sender: Any) {
-        if txtAccountNumber.text!.isEmpty{
-            let alert=UIAlertController(title: "Error", message: "Enter Account Number", preferredStyle: UIAlertController.Style.alert)
-            let actionok=UIAlertAction(title: "OK", style: .default, handler: nil)
-            alert.addAction(actionok)
-            self.present(alert,animated: true,completion: nil)
-        }
-        else if txtAmountToDeposit.text!.isEmpty{
-            let alert=UIAlertController(title: "Error", message: "Enter Amount to Deposit", preferredStyle: UIAlertController.Style.alert)
-            let actionok=UIAlertAction(title: "OK", style: .default, handler: nil)
-            alert.addAction(actionok)
-            self.present(alert,animated: true,completion: nil)
-        }
-        else{
-            self.accountNumber = txtAccountNumber.text!
-            let amountToDeposit: String = txtAmountToDeposit.text!
-            getAccountType(ref: ref, completionHandler: { (isFinished) in
-                if isFinished {
-                    print("Account Type is \(self.flag)")
-                    
-                }
-            })
-            var accountType: String = ""
-            if flag == 1{
-                accountType = "savings"
-            }
-            else{
-                accountType = "current"
-            }
-            var balance: String = "0.0"
-            ref.child("bank").child(accountType).child(self.accountNumber).observeSingleEvent(of: .value, with: { (snapshot) in
-                // Get user value
-                let value = snapshot.value as? NSDictionary
-                balance = value?["accountbalance"] as? String ?? ""
-                let doubleBalance = Double(balance)
-                let doubleAmountToDeposit = Double(amountToDeposit)
-                let sum: Double = doubleBalance! + doubleAmountToDeposit!
-                
-self.ref.child("bank").child(accountType).child(String(self.accountNumber)).child("accountbalance").setValue(String(sum))
-                
-                
-                
-                //let user = User(username: username)
-                
-                // ...
-            }) { (error) in
-                print(error.localizedDescription)
-            }
-            
-            
-            let alert=UIAlertController(title: "Success", message: "Deposit Successful", preferredStyle: UIAlertController.Style.alert)
-            /*let actionok=UIAlertAction(title: "OK", style: .default, handler: nil)
-            alert.addAction(actionok)
-            self.present(alert,animated: true,completion: nil)*/
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
-                self.navigationController?.popViewController(animated: true)
-                return
-            }))
-            self.present(alert,animated: true,completion: nil)
-            
-        }
-        
-    }
     
-    @IBAction func txtFetchButton(_ sender: Any) {
+    
+    @IBAction func btnWithdrawlButton(_ sender: Any) {
         if self.txtAccountNumber.text!.isEmpty{
             let alert=UIAlertController(title: "Error", message: "Enter Account Number", preferredStyle: UIAlertController.Style.alert)
             let actionok=UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -177,9 +116,75 @@ self.ref.child("bank").child(accountType).child(String(self.accountNumber)).chil
                 print(error.localizedDescription)
             }
         }
-        
     }
     
+    @IBAction func btnFetchButton(_ sender: Any) {
+        
+         if txtAccountNumber.text!.isEmpty{
+         let alert=UIAlertController(title: "Error", message: "Enter Account Number", preferredStyle: UIAlertController.Style.alert)
+         let actionok=UIAlertAction(title: "OK", style: .default, handler: nil)
+         alert.addAction(actionok)
+         self.present(alert,animated: true,completion: nil)
+         }
+         else if txtAmountToDeposit.text!.isEmpty{
+         let alert=UIAlertController(title: "Error", message: "Enter Amount to Deposit", preferredStyle: UIAlertController.Style.alert)
+         let actionok=UIAlertAction(title: "OK", style: .default, handler: nil)
+         alert.addAction(actionok)
+         self.present(alert,animated: true,completion: nil)
+         }
+         else{
+         self.accountNumber = txtAccountNumber.text!
+         let amountToDeposit: String = txtAmountToDeposit.text!
+         getAccountType(ref: ref, completionHandler: { (isFinished) in
+         if isFinished {
+         print("Account Type is \(self.flag)")
+         
+         }
+         })
+         var accountType: String = ""
+         if flag == 1{
+         accountType = "savings"
+         }
+         else{
+         accountType = "current"
+         }
+         var balance: String = "0.0"
+         ref.child("bank").child(accountType).child(self.accountNumber).observeSingleEvent(of: .value, with: { (snapshot) in
+         // Get user value
+         let value = snapshot.value as? NSDictionary
+         balance = value?["accountbalance"] as? String ?? ""
+         let doubleBalance = Double(balance)
+         let doubleAmountToDeposit = Double(amountToDeposit)
+         let sum: Double = doubleBalance! - doubleAmountToDeposit!
+         
+         self.ref.child("bank").child(accountType).child(String(self.accountNumber)).child("accountbalance").setValue(String(sum))
+         
+         
+         
+         //let user = User(username: username)
+         
+         // ...
+         }) { (error) in
+         print(error.localizedDescription)
+         }
+         
+         
+         let alert=UIAlertController(title: "Success", message: "Withdrawl Successful", preferredStyle: UIAlertController.Style.alert)
+         /*let actionok=UIAlertAction(title: "OK", style: .default, handler: nil)
+         alert.addAction(actionok)
+         self.present(alert,animated: true,completion: nil)*/
+         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+         self.navigationController?.popViewController(animated: true)
+         return
+         }))
+         self.present(alert,animated: true,completion: nil)
+         
+         }
+         
+         
+        
+        
+    }
     /*
     // MARK: - Navigation
 

@@ -168,10 +168,10 @@
             </objects>
             <point key="canvasLocation" x="1744.9275362318842" y="831.69642857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--Withdrawl View Controller-->
         <scene sceneID="o2r-Xj-ExM">
             <objects>
-                <viewController id="RGX-EE-k0f" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WithdrawlVC" id="RGX-EE-k0f" customClass="WithdrawlViewController" customModule="BankingSystemiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mEE-bT-yX2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -184,29 +184,61 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Account Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SQf-FR-R5R">
-                                <rect key="frame" x="55" y="163" width="312" height="30"/>
+                                <rect key="frame" x="22" y="163" width="372" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter  the Amount " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OVj-F6-vcA">
-                                <rect key="frame" x="55" y="217" width="312" height="30"/>
+                                <rect key="frame" x="22" y="402" width="372" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3mZ-Vf-nQk">
-                                <rect key="frame" x="175" y="291" width="73" height="33"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0O7-mr-eet">
+                                <rect key="frame" x="30" y="270" width="364" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Withdraw"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VPD-2E-Eet">
+                                <rect key="frame" x="30" y="313" width="364" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nA2-mu-PMp">
+                                <rect key="frame" x="22" y="201" width="374" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Fetch"/>
+                                <connections>
+                                    <action selector="btnWithdrawlButton:" destination="RGX-EE-k0f" eventType="touchUpInside" id="gow-Ee-xpb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3mZ-Vf-nQk">
+                                <rect key="frame" x="25" y="450" width="364" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Withdrawl"/>
+                                <connections>
+                                    <action selector="btnFetchButton:" destination="RGX-EE-k0f" eventType="touchUpInside" id="G7B-5F-7Wl"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="7cF-YY-mIl"/>
                     </view>
+                    <connections>
+                        <outlet property="btnDepositOutlet" destination="3mZ-Vf-nQk" id="tJ8-g9-UUs"/>
+                        <outlet property="labelAccountHolder" destination="0O7-mr-eet" id="bCE-Db-0eC"/>
+                        <outlet property="labelContactNumber" destination="VPD-2E-Eet" id="zPe-A3-B9z"/>
+                        <outlet property="txtAccountNumber" destination="SQf-FR-R5R" id="O8L-DE-LCX"/>
+                        <outlet property="txtAmountToDeposit" destination="OVj-F6-vcA" id="cYq-26-Ma6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OM6-HM-593" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -371,6 +403,7 @@
                         <outlet property="employeeActivities" destination="J1Q-e7-dyc" id="Fsf-N4-e6D"/>
                         <segue destination="EZK-C0-DNE" kind="show" id="k19-ih-KKP"/>
                         <segue destination="Ipb-Wf-K45" kind="show" id="9m5-RC-CQT"/>
+                        <segue destination="RGX-EE-k0f" kind="show" id="VWl-QR-pc9"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tZ3-PK-xBt" userLabel="First Responder" sceneMemberID="firstResponder"/>
