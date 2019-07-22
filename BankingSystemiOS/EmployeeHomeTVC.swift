@@ -75,7 +75,9 @@ class EmployeeHomeTVC: UITableViewController {
                 //self.navigationController?.pushViewController(self.newViewController, animated: true)
                 //self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                 dismissViewControllers()
-                self.navigationController?.popToRootViewController(animated: true)
+                //self.navigationController?.popToRootViewController(animated: true)
+                
+                self.performSegue(withIdentifier: "EmployeeToLogin", sender: self)
                 
             } catch let signOutError as NSError {
                 print ("Error signing out: %@", signOutError)

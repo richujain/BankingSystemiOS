@@ -142,6 +142,7 @@ self.ref.child("bank").child(accountType).child(String(self.accountNumber)).chil
             self.present(alert,animated: true,completion: nil)
         }
         else{
+            txtAccountNumber.isUserInteractionEnabled = false
             accountNumber = txtAccountNumber.text!
             let personId = txtAccountNumber.text!
             ref.child("customers").child(personId).observeSingleEvent(of: .value, with: { (snapshot) in
