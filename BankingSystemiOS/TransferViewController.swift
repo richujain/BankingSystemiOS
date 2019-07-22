@@ -23,7 +23,6 @@ class TransferViewController: UIViewController {
     var flag:Int = 0
     var ref: DatabaseReference!
     var isValidAccount: Bool = false
-    var accountNumber: String = ""
     
     
     override func viewDidLoad() {
@@ -33,10 +32,10 @@ class TransferViewController: UIViewController {
         // Do any additional setup after loading the view.
         ref = Database.database().reference()
     }
-    func getAccountType(ref: DatabaseReference, completionHandler: @escaping completion) {
+    func getAccountType(accountNumber: String, ref: DatabaseReference, completionHandler: @escaping completion) {
         flag = 0
         
-        ref.child("bank").child("savings").child(self.accountNumber).observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child("bank").child("savings").child(accountNumber).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
             var acc = "0"
@@ -53,7 +52,7 @@ class TransferViewController: UIViewController {
             print(error.localizedDescription)
         }
         
-        ref.child("bank").child("current").child(self.accountNumber).observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child("bank").child("current").child(accountNumber).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
             var acc = "0"
@@ -76,7 +75,91 @@ class TransferViewController: UIViewController {
     
 
     @IBAction func btnFetch(_ sender: Any) {
-        
+        if self.txtRemitterAccountNumber.text!.isEmpty{
+            let alert=UIAlertController(title: "Error", message: "Enter Remitter Account Number", preferredStyle: UIAlertController.Style.alert)
+            let actionok=UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(actionok)
+            self.present(alert,animated: true,completion: nil)
+        }else if self.txtBeneficiaryAccountNumber.text!.isEmpty{
+            let alert=UIAlertController(title: "Error", message: "Enter Beneficiary Account Number", preferredStyle: UIAlertController.Style.alert)
+            let actionok=UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(actionok)
+            self.present(alert,animated: true,completion: nil)
+        }
+        else{
+            txtRemitterAccountNumber.isUserInteractionEnabled = false
+            txtBeneficiaryAccountNumber.isUserInteractionEnabled = false
+            //var accountNumber = txtRemitterAccountNumber.text!
+            //----------------------------
+            var personId = txtRemitterAccountNumber.text!
+            ref.child("customers").child(personId).observeSingleEvent(of: .value, with: { (snapshot) in
+                // Get user value
+                let value = snapshot.value as? NSDictionary
+                var remitterName = ""
+                remitterName = value?["name"] as? String ?? ""
+                var remitterContactNumber = ""
+                remitterContactNumber = value?["contactnumber"] as? String ?? ""
+                DispatchQueue.main.async {
+                    self.labelRemitterName.text = "Remitter Account Holder : \(remitterName)"
+                    self.labelRemitterContactNumber.text = "Remitter Contact Number : \(remitterContactNumber)"
+                    if !self.labelRemitterName.text!.isEmpty{
+                        DispatchQueue.main.async {
+                            self.btnTransferAmount.isHidden = false
+                            self.txtAmountToTransfer.isHidden = false
+                        }
+                    }
+                    else{
+                        self.btnTransferAmount.isHidden = true
+                        self.txtAmountToTransfer.isHidden = true
+                        let alert=UIAlertController(title: "Error", message: "Account Does Not Exists", preferredStyle: UIAlertController.Style.alert)
+                        let actionok=UIAlertAction(title: "OK", style: .default, handler: nil)
+                        alert.addAction(actionok)
+                        self.present(alert,animated: true,completion: nil)
+                    }
+                }
+                
+                //let user = User(username: username)
+                
+                // ...
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+            //-------
+           
+            personId = txtBeneficiaryAccountNumber.text!
+            ref.child("customers").child(personId).observeSingleEvent(of: .value, with: { (snapshot) in
+                // Get user value
+                let value = snapshot.value as? NSDictionary
+                var beneficiaryName = ""
+                beneficiaryName = value?["name"] as? String ?? ""
+                var beneficiaryContactNumber = ""
+                beneficiaryContactNumber = value?["contactnumber"] as? String ?? ""
+                DispatchQueue.main.async {
+                    self.labelBeneficiaryName.text = "Beneficiary Account Holder : \(beneficiaryName)"
+                    self.labelBeneficiaryContactNumber.text = "Beneficiary Contact Number : \(beneficiaryContactNumber)"
+                    if !self.labelBeneficiaryName.text!.isEmpty{
+                        DispatchQueue.main.async {
+                            self.btnTransferAmount.isHidden = false
+                            self.txtAmountToTransfer.isHidden = false
+                        }
+                    }
+                    else{
+                        self.btnTransferAmount.isHidden = true
+                        self.txtAmountToTransfer.isHidden = true
+                        let alert=UIAlertController(title: "Error", message: "Account Does Not Exists", preferredStyle: UIAlertController.Style.alert)
+                        let actionok=UIAlertAction(title: "OK", style: .default, handler: nil)
+                        alert.addAction(actionok)
+                        self.present(alert,animated: true,completion: nil)
+                    }
+                }
+                
+                //let user = User(username: username)
+                
+                // ...
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+        }
     }
     @IBAction func btnTransferAmount(_ sender: Any) {
         

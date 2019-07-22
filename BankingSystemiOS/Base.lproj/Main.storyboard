@@ -684,7 +684,7 @@
         <!--Transfer View Controller-->
         <scene sceneID="JxH-kt-9Mi">
             <objects>
-                <viewController id="LUb-Rk-pg2" customClass="TransferViewController" customModule="BankingSystemiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TransferVC" id="LUb-Rk-pg2" customClass="TransferViewController" customModule="BankingSystemiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iP5-8M-5IH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

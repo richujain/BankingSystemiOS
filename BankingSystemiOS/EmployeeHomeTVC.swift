@@ -68,7 +68,11 @@ class EmployeeHomeTVC: UITableViewController {
             let resultViewController = self.storyBoard.instantiateViewController(withIdentifier: "WithdrawlVC") as! WithdrawlViewController
             self.navigationController?.pushViewController(resultViewController, animated: true)
             
-        } else if indexPath.section == 2 && indexPath.row == 0{
+        }else if indexPath.section == 1 && indexPath.row == 2 {
+            let resultViewController = self.storyBoard.instantiateViewController(withIdentifier: "TransferVC") as! TransferViewController
+            self.navigationController?.pushViewController(resultViewController, animated: true)
+            
+        }else if indexPath.section == 2 && indexPath.row == 0{
             let firebaseAuth = Auth.auth()
             do {
                 try firebaseAuth.signOut()
