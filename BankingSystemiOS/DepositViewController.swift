@@ -18,6 +18,7 @@ class DepositViewController: UIViewController {
     typealias completion = (_ isFinished:Bool) -> Void
     var flag:Int = 0
     var ref: DatabaseReference!
+    var transferRef: DatabaseReference!
     var isValidAccount: Bool = false
     var accountNumber: String = ""
     
@@ -28,6 +29,7 @@ class DepositViewController: UIViewController {
         btnDepositOutlet.isHidden = true
         txtAmountToDeposit.isHidden = true
         ref = Database.database().reference()
+        transferRef = Database.database().reference()
     }
     func getAccountType(ref: DatabaseReference, completionHandler: @escaping completion) {
         flag = 0

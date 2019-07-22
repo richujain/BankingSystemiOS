@@ -16,6 +16,7 @@
 		0943166322CA8FA300ED0F7B /* BankingSystemiOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0943166222CA8FA300ED0F7B /* BankingSystemiOSUITests.swift */; };
 		37115CFD3DDE1900E7EDE14E /* Pods_BankingSystemiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B08A29C33437E96DE2122DAB /* Pods_BankingSystemiOS.framework */; };
 		60121A4F22E59A92000D044F /* TransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60121A4E22E59A92000D044F /* TransferViewController.swift */; };
+		60121A5122E5B7C8000D044F /* ViewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60121A5022E5B7C8000D044F /* ViewUserViewController.swift */; };
 		6012C32A22E0E85000548DCD /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6012C32922E0E85000548DCD /* Validation.swift */; };
 		60C0768422E5510100B9384E /* DepositViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C0768322E5510100B9384E /* DepositViewController.swift */; };
 		60C0768622E57D8000B9384E /* WithdrawlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C0768522E57D8000B9384E /* WithdrawlViewController.swift */; };
@@ -69,6 +70,7 @@
 		2EC22E46BB000DA88FF0EE26 /* Pods_BankingSystemiOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BankingSystemiOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DFAFE2D7D0A58107F52B6AA /* Pods-BankingSystemiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankingSystemiOS.debug.xcconfig"; path = "Target Support Files/Pods-BankingSystemiOS/Pods-BankingSystemiOS.debug.xcconfig"; sourceTree = "<group>"; };
 		60121A4E22E59A92000D044F /* TransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferViewController.swift; sourceTree = "<group>"; };
+		60121A5022E5B7C8000D044F /* ViewUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUserViewController.swift; sourceTree = "<group>"; };
 		6012C32922E0E85000548DCD /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		60C0768322E5510100B9384E /* DepositViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositViewController.swift; sourceTree = "<group>"; };
 		60C0768522E57D8000B9384E /* WithdrawlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawlViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				63A30DC122DFB810009ED92E /* AppDelegate.swift */,
 				63F1363F22E1382600102212 /* UserInfoViewController.swift */,
 				090FACFC22D45C7700337E51 /* EmployeeHomeTVC.swift */,
+				60121A5022E5B7C8000D044F /* ViewUserViewController.swift */,
 				60121A4E22E59A92000D044F /* TransferViewController.swift */,
 				63A30DBF22DFAC27009ED92E /* CreateBankAccountVC.swift */,
 				60C0768522E57D8000B9384E /* WithdrawlViewController.swift */,
@@ -437,6 +440,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60121A5122E5B7C8000D044F /* ViewUserViewController.swift in Sources */,
 				0943164522CA8FA100ED0F7B /* LoginViewController.swift in Sources */,
 				60121A4F22E59A92000D044F /* TransferViewController.swift in Sources */,
 				63A30DA122DF8140009ED92E /* Person.swift in Sources */,
