@@ -162,7 +162,104 @@ class TransferViewController: UIViewController {
         }
     }
     @IBAction func btnTransferAmount(_ sender: Any) {
-        
+        if txtAmountToTransfer.text!.isEmpty{
+            let alert=UIAlertController(title: "Error", message: "Enter Amount to Deposit", preferredStyle: UIAlertController.Style.alert)
+            let actionok=UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(actionok)
+            self.present(alert,animated: true,completion: nil)
+        }
+        else{
+            
+            
+            
+            
+            
+            let remitterAccountNumber = txtRemitterAccountNumber.text!
+            let beneficiaryAccountNumber = txtBeneficiaryAccountNumber.text!
+            let amountToTransfer: String = txtAmountToTransfer.text!
+            //withdrawl
+            getAccountType(accountNumber: remitterAccountNumber, ref: ref, completionHandler: { (isFinished) in
+                if isFinished {
+                    print("Account Type is \(self.flag)")
+                    
+                }
+            })
+            var accountType: String = ""
+            if flag == 1{
+                accountType = "savings"
+            }
+            else{
+                accountType = "current"
+            }
+            var balance: String = "0.0"
+            ref.child("bank").child(accountType).child(remitterAccountNumber).observeSingleEvent(of: .value, with: { (snapshot) in
+                // Get user value
+                let value = snapshot.value as? NSDictionary
+                balance = value?["accountbalance"] as? String ?? ""
+                let doubleBalance = Double(balance)
+                let doubleAmountToDeposit = Double(amountToTransfer)
+                let sum: Double = doubleBalance! - doubleAmountToDeposit!
+                
+                self.ref.child("bank").child(accountType).child(String(remitterAccountNumber)).child("accountbalance").setValue(String(sum))
+                
+                
+                
+                //let user = User(username: username)
+                
+                // ...
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+            
+            
+            //deposit
+            getAccountType(accountNumber: beneficiaryAccountNumber, ref: ref, completionHandler: { (isFinished) in
+                if isFinished {
+                    print("Account Type is \(self.flag)")
+                    
+                }
+            })
+             accountType = ""
+            if flag == 1{
+                accountType = "savings"
+            }
+            else{
+                accountType = "current"
+            }
+             balance = "0.0"
+            ref.child("bank").child(accountType).child(beneficiaryAccountNumber).observeSingleEvent(of: .value, with: { (snapshot) in
+                // Get user value
+                let value = snapshot.value as? NSDictionary
+                balance = value?["accountbalance"] as? String ?? ""
+                let doubleBalance = Double(balance)
+                let doubleAmountToDeposit = Double(amountToTransfer)
+                let sum: Double = doubleBalance! + doubleAmountToDeposit!
+                
+                self.ref.child("bank").child(accountType).child(String(beneficiaryAccountNumber)).child("accountbalance").setValue(String(sum))
+                
+                
+                
+                //let user = User(username: username)
+                
+                // ...
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        }
     }
     /*
     // MARK: - Navigation

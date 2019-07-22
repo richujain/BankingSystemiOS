@@ -135,49 +135,53 @@ class WithdrawlViewController: UIViewController {
          else{
          self.accountNumber = txtAccountNumber.text!
          let amountToDeposit: String = txtAmountToDeposit.text!
+        var accountType: String = ""
          getAccountType(ref: ref, completionHandler: { (isFinished) in
          if isFinished {
          print("Account Type is \(self.flag)")
-         
+            if self.flag == 1{
+                accountType = "savings"
+            }
+            else{
+                accountType = "current"
+            }
+            var balance: String = "0.0"
+           print("Account type is \(accountType)")
+            self.ref.child("bank").child(accountType).child(self.accountNumber).observeSingleEvent(of: .value, with: { (snapshot) in
+                // Get user value
+                if let value = snapshot.value as? NSDictionary{
+                    balance = value["accountbalance"] as? String ?? ""
+                    let doubleBalance = Double(balance)
+                    let doubleAmountToDeposit = Double(amountToDeposit)
+                    let sum: Double = doubleBalance! - doubleAmountToDeposit!
+                    
+                    self.ref.child("bank").child(accountType).child(String(self.accountNumber)).child("accountbalance").setValue(String(sum))
+                }
+                
+                
+                
+                
+                //let user = User(username: username)
+                
+                // ...
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+            
+            
+            let alert=UIAlertController(title: "Success", message: "Withdrawl Successful", preferredStyle: UIAlertController.Style.alert)
+            /*let actionok=UIAlertAction(title: "OK", style: .default, handler: nil)
+             alert.addAction(actionok)
+             self.present(alert,animated: true,completion: nil)*/
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+                self.navigationController?.popViewController(animated: true)
+                return
+            }))
+            self.present(alert,animated: true,completion: nil)
+            
          }
          })
-         var accountType: String = ""
-         if flag == 1{
-         accountType = "savings"
-         }
-         else{
-         accountType = "current"
-         }
-         var balance: String = "0.0"
-         ref.child("bank").child(accountType).child(self.accountNumber).observeSingleEvent(of: .value, with: { (snapshot) in
-         // Get user value
-         let value = snapshot.value as? NSDictionary
-         balance = value?["accountbalance"] as? String ?? ""
-         let doubleBalance = Double(balance)
-         let doubleAmountToDeposit = Double(amountToDeposit)
-         let sum: Double = doubleBalance! - doubleAmountToDeposit!
          
-         self.ref.child("bank").child(accountType).child(String(self.accountNumber)).child("accountbalance").setValue(String(sum))
-         
-         
-         
-         //let user = User(username: username)
-         
-         // ...
-         }) { (error) in
-         print(error.localizedDescription)
-         }
-         
-         
-         let alert=UIAlertController(title: "Success", message: "Withdrawl Successful", preferredStyle: UIAlertController.Style.alert)
-         /*let actionok=UIAlertAction(title: "OK", style: .default, handler: nil)
-         alert.addAction(actionok)
-         self.present(alert,animated: true,completion: nil)*/
-         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
-         self.navigationController?.popViewController(animated: true)
-         return
-         }))
-         self.present(alert,animated: true,completion: nil)
          
          }
          
