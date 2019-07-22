@@ -93,16 +93,16 @@
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="137.94642857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--Deposit View Controller-->
         <scene sceneID="sMD-5b-kLj">
             <objects>
-                <viewController id="Ipb-Wf-K45" sceneMemberID="viewController">
+                <viewController id="Ipb-Wf-K45" customClass="DepositViewController" customModule="BankingSystemiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gw8-CB-M80">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter the Amount " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0kf-LT-tQ9">
-                                <rect key="frame" x="42" y="233" width="330" height="30"/>
+                                <rect key="frame" x="42" y="393" width="330" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -123,14 +123,46 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CyY-g8-bsn">
-                                <rect key="frame" x="181" y="306" width="53" height="30"/>
+                                <rect key="frame" x="42" y="466" width="330" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Deposit"/>
+                                <connections>
+                                    <action selector="btnDepositButton:" destination="Ipb-Wf-K45" eventType="touchUpInside" id="a1o-ib-uI5"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9oI-XR-9Vv">
+                                <rect key="frame" x="42" y="283" width="330" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ba-dC-OYw">
+                                <rect key="frame" x="42" y="329" width="330" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LC7-xB-hQ1">
+                                <rect key="frame" x="42" y="235" width="352" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Fetch Details"/>
+                                <connections>
+                                    <action selector="txtFetchButton:" destination="Ipb-Wf-K45" eventType="touchUpInside" id="iXx-Wj-wPC"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="U4y-ie-LBO"/>
                     </view>
+                    <connections>
+                        <outlet property="btnDepositOutlet" destination="CyY-g8-bsn" id="zOM-wR-WUY"/>
+                        <outlet property="labelAccountHolder" destination="9oI-XR-9Vv" id="VmA-WJ-3Af"/>
+                        <outlet property="labelContactNumber" destination="8ba-dC-OYw" id="S4g-un-ANS"/>
+                        <outlet property="txtAccountNumber" destination="lx3-tw-A10" id="ot8-Qr-DHw"/>
+                        <outlet property="txtAmountToDeposit" destination="0kf-LT-tQ9" id="7Gg-va-W4N"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KCi-nL-ah8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
