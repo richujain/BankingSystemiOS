@@ -301,8 +301,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bank Branch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KNv-58-mhR">
+                                <rect key="frame" x="20" y="560" width="374" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Account Balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AGP-EN-M4g">
+                                <rect key="frame" x="20" y="603" width="374" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hvu-o9-rzd">
-                                <rect key="frame" x="20" y="587" width="374" height="51"/>
+                                <rect key="frame" x="20" y="669" width="374" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="DONE"/>
                             </button>
@@ -317,11 +331,17 @@
                                 <rect key="frame" x="20" y="200" width="374" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Fetch"/>
+                                <connections>
+                                    <action selector="btnFetch:" destination="omZ-47-gJP" eventType="touchUpInside" id="gsm-ly-Buu"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="T4b-lz-ydF"/>
                     </view>
+                    <connections>
+                        <outlet property="txtAccountNumber" destination="970-sx-PIu" id="IMp-oy-zVb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PTR-Ug-fXW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -890,6 +910,7 @@
         <image name="bank-logo" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="k19-ih-KKP"/>
         <segue reference="AIM-PO-hi9"/>
     </inferredMetricsTieBreakers>
 </document>

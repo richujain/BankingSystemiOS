@@ -10,13 +10,16 @@ import UIKit
 
 class ViewUserViewController: UIViewController {
 
+    @IBOutlet weak var txtAccountNumber: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func btnFetch(_ sender: Any) {
+    }
+    
     /*
     // MARK: - Navigation
 
