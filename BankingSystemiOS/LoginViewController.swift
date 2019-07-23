@@ -8,7 +8,9 @@
 
 import UIKit
 import FirebaseAuth
-class LoginViewController: UIViewController, UITextFieldDelegate {
+import MessageUI
+
+class LoginViewController: UIViewController, UITextFieldDelegate, MFMessageComposeViewControllerDelegate {
     
     
     @IBOutlet weak var labelInstructions: UILabel!
@@ -37,6 +39,55 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         getRememberMeValues()
         
     }
+    
+    
+    
+    
+    @IBAction func btnContact(_ sender: Any) {
+        if let url = URL(string: "tel://+14372391989)"), UIApplication.shared.canOpenURL(url){
+            if #available(iOS 10, *)
+            {
+                UIApplication.shared.open(url)
+            }
+            else
+            {
+                UIApplication.shared.openURL(url)
+            }
+        }
+    }
+    @IBAction func btnSMS(_ sender: Any) {
+        if MFMessageComposeViewController.canSendText() {
+            
+            
+            let messageVC = MFMessageComposeViewController()
+            
+            messageVC.body = "Hello"
+            messageVC.recipients = ["+14372391989"]
+            messageVC.messageComposeDelegate = self
+            
+            self.present(messageVC, animated: false, completion: nil)
+        }
+        else{
+            print("NO SIM available")
+        }
+    }
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult)
+    {
+        
+        switch (result) {
+        case .cancelled:
+            print("Message was cancelled")
+            self.dismiss(animated: true, completion: nil)
+        case .failed:
+            print("Message failed")
+            self.dismiss(animated: true, completion: nil)
+        case .sent:
+            print("Message was sent")
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    
     @IBAction func btnInstructions(_ sender: UIButton) {
         let resultViewController = self.storyBoard.instantiateViewController(withIdentifier: "InstructionsVC") as! InstructionsViewController
         self.navigationController?.pushViewController(resultViewController, animated: true)

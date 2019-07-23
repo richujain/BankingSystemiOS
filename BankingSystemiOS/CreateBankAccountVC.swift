@@ -84,7 +84,14 @@ class CreateBankAccountVC: UIViewController {
         var flag: Bool = true
         if fullName!.isEmpty{
             flag = false
-            let alert=UIAlertController(title: "Error", message: "customer Name Should Not be Empty", preferredStyle: .alert)
+            let alert=UIAlertController(title: "Error", message: "Name Field Empty", preferredStyle: .alert)
+            let actionOk=UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(actionOk)
+            self.present(alert,animated: true,completion: nil)
+        }
+        else if fullName!.count < 5{
+            flag = false
+            let alert=UIAlertController(title: "Error", message: "Name Should Not be less than 5 characters", preferredStyle: .alert)
             let actionOk=UIAlertAction(title: "OK", style: .default, handler: nil)
             alert.addAction(actionOk)
             self.present(alert,animated: true,completion: nil)
@@ -92,7 +99,7 @@ class CreateBankAccountVC: UIViewController {
         let address=txtCutomerAddress.text
         if address!.isEmpty {
             flag = false
-            let alert=UIAlertController(title: "Error", message: "Address is empty", preferredStyle: .alert)
+            let alert=UIAlertController(title: "Error", message: "Address Field Is Empty", preferredStyle: .alert)
             let actionOk=UIAlertAction(title: "OK", style: .default, handler: nil)
             alert.addAction(actionOk)
             self.present(alert,animated: true,completion: nil)
@@ -105,13 +112,10 @@ class CreateBankAccountVC: UIViewController {
             let actionOk=UIAlertAction(title: "OK", style: .default, handler: nil)
             alert.addAction(actionOk)
             self.present(alert,animated: true,completion: nil)
-            
         }
-        
         let contactNumber=txtContactNumber.text
-        if contactNumber!.isEmpty {
+        if !contactNumber!.isvalidPhoneNumber() {
             flag = false
-            print("Phone Number Validation Failed! Try Again")
             let alert=UIAlertController(title: "Error", message: "Please Enter Valid ContactNumber", preferredStyle: UIAlertController.Style.alert)
             let actionok=UIAlertAction(title: "ok", style: .default, handler: nil)
             alert.addAction(actionok)
@@ -119,14 +123,9 @@ class CreateBankAccountVC: UIViewController {
             
         }
         let emailId=txtEmailId.text
-        if emailId!.isEmpty{
-            /*if(emailId!.isValidEmail()){
-                self.ref.child("customers").child(String(personId)).child("emailid").setValue(txtEmailId.text)
-            }
-            else {*/
+        if emailId!.isValidEmail(){
                 flag = false
-                print("Email Id Validation! Try Again")
-                let alert=UIAlertController(title: "Error", message: "Please Enter EmailId", preferredStyle: UIAlertController.Style.alert)
+                let alert=UIAlertController(title: "Error", message: "Please Enter Valid Email ID", preferredStyle: UIAlertController.Style.alert)
                 let actionok=UIAlertAction(title: "ok", style: .default, handler: nil)
                 alert.addAction(actionok)
                 self.present(alert,animated: true,completion: nil)

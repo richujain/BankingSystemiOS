@@ -24,6 +24,7 @@
 		60C0768622E57D8000B9384E /* WithdrawlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C0768522E57D8000B9384E /* WithdrawlViewController.swift */; };
 		6339709A22CEB93A00A62681 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6339709922CEB93900A62681 /* GoogleService-Info.plist */; };
 		6378F65622E6AD4100B08478 /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6378F65522E6AD4100B08478 /* TransactionsViewController.swift */; };
+		6378F65822E73D0B00B08478 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6378F65722E73D0B00B08478 /* MessageUI.framework */; };
 		63A30DA122DF8140009ED92E /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A30DA022DF8140009ED92E /* Person.swift */; };
 		63A30DA422DF81DD009ED92E /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A30DA322DF81DD009ED92E /* Employee.swift */; };
 		63A30DA622DF83A1009ED92E /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A30DA522DF83A1009ED92E /* Customer.swift */; };
@@ -81,6 +82,7 @@
 		60C0768522E57D8000B9384E /* WithdrawlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawlViewController.swift; sourceTree = "<group>"; };
 		6339709922CEB93900A62681 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6378F65522E6AD4100B08478 /* TransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
+		6378F65722E73D0B00B08478 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		63A30DA022DF8140009ED92E /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		63A30DA322DF81DD009ED92E /* Employee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
 		63A30DA522DF83A1009ED92E /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6378F65822E73D0B00B08478 /* MessageUI.framework in Frameworks */,
 				60121A5522E6940D000D044F /* WebKit.framework in Frameworks */,
 				37115CFD3DDE1900E7EDE14E /* Pods_BankingSystemiOS.framework in Frameworks */,
 			);
@@ -220,6 +223,7 @@
 		EF0E2F685002E4E233005C02 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6378F65722E73D0B00B08478 /* MessageUI.framework */,
 				60121A5422E6940D000D044F /* WebKit.framework */,
 				B08A29C33437E96DE2122DAB /* Pods_BankingSystemiOS.framework */,
 				2EC22E46BB000DA88FF0EE26 /* Pods_BankingSystemiOSTests.framework */,
