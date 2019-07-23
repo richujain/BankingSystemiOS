@@ -18,6 +18,7 @@ class DepositViewController: UIViewController {
     typealias completion = (_ isFinished:Bool) -> Void
     var flag:Int = 0
     var ref: DatabaseReference!
+    var transferRef: DatabaseReference!
     var isValidAccount: Bool = false
     var accountNumber: String = ""
     
@@ -28,6 +29,7 @@ class DepositViewController: UIViewController {
         btnDepositOutlet.isHidden = true
         txtAmountToDeposit.isHidden = true
         ref = Database.database().reference()
+        transferRef = Database.database().reference()
     }
     func getAccountType(ref: DatabaseReference, completionHandler: @escaping completion) {
         flag = 0
@@ -84,46 +86,76 @@ class DepositViewController: UIViewController {
             self.present(alert,animated: true,completion: nil)
         }
         else{
-            let accountNumber = txtAccountNumber.text
-            let amountToDeposit = txtAmountToDeposit.text
+            self.accountNumber = txtAccountNumber.text!
+            let amountToDeposit: String = txtAmountToDeposit.text!
+            var accountType: String = ""
             getAccountType(ref: ref, completionHandler: { (isFinished) in
                 if isFinished {
                     print("Account Type is \(self.flag)")
+                    if self.flag == 1{
+                        accountType = "savings"
+                    }
+                    else{
+                        accountType = "current"
+                    }
+                    var balance: String = "0.0"
+                    print("Account Type is \(accountType)")
+                    print("accountNumber is \(self.accountNumber)")
+                    
+                    self.ref.child("bank").child(accountType).child(self.accountNumber).observeSingleEvent(of: .value, with: { (snapshot) in
+                        // Get user value
+                        print("Snapshot is \(snapshot)")
+                        if let value = snapshot.value as? NSDictionary{
+                            balance = value["accountbalance"] as? String ?? ""
+                            print("Balance is \(balance)")
+                            print("Acc No is \(self.accountNumber)")
+                            
+                            let doubleBalance = Double(balance)
+                            let doubleAmountToDeposit = Double(amountToDeposit)
+                            let sum: Double = doubleBalance! + doubleAmountToDeposit!
+                            self.ref.child("bank").child(accountType).child(String(self.accountNumber)).child("accountbalance").setValue(String(sum))
+                        }
+                        else{
+                            let alert=UIAlertController(title: "Failed", message: "Deposit Failed", preferredStyle: UIAlertController.Style.alert)
+                            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+                                self.navigationController?.popViewController(animated: true)
+                                return
+                            }))
+                            self.present(alert,animated: true,completion: nil)
+                        }
+                        
+                        
+                        
+                        
+                        
+                        
+                        //let user = User(username: username)
+                        
+                        // ...
+                    }) { (error) in
+                        print(error.localizedDescription)
+                    }
+                    
+                    
+                    let alert=UIAlertController(title: "Success", message: "Deposit Successful", preferredStyle: UIAlertController.Style.alert)
+                    /*let actionok=UIAlertAction(title: "OK", style: .default, handler: nil)
+                     alert.addAction(actionok)
+                     self.present(alert,animated: true,completion: nil)*/
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+                        self.navigationController?.popViewController(animated: true)
+                        return
+                    }))
+                    self.present(alert,animated: true,completion: nil)
                     
                 }
             })
-            var accountType: String = ""
-            if flag == 1{
-                accountType = "savings"
-            }
-            else{
-                accountType = "current"
-            }
-            var balance: String = "0.0"
-            ref.child("bank").child(accountType).child(self.accountNumber).observeSingleEvent(of: .value, with: { (snapshot) in
-                // Get user value
-                let value = snapshot.value as? NSDictionary
-                balance = value?["accountnumber"] as? String ?? ""
-                let sum: Double = Double(balance) + Double(amountToDeposit!) ?? 0.0
-                
-                
-                
-                //let user = User(username: username)
-                
-                // ...
-            }) { (error) in
-                print(error.localizedDescription)
-            }
-            self.ref.child("bank").child(accountType).child(String(self.accountNumber)).child("accountbalance").setValue(balance)
             
-            let alert=UIAlertController(title: "Success", message: "Deposit Successful", preferredStyle: UIAlertController.Style.alert)
-            let actionok=UIAlertAction(title: "OK", style: .default, handler: nil)
-            alert.addAction(actionok)
-            self.present(alert,animated: true,completion: nil)
+            
             
         }
         
     }
+    
     @IBAction func txtFetchButton(_ sender: Any) {
         if self.txtAccountNumber.text!.isEmpty{
             let alert=UIAlertController(title: "Error", message: "Enter Account Number", preferredStyle: UIAlertController.Style.alert)
@@ -132,6 +164,7 @@ class DepositViewController: UIViewController {
             self.present(alert,animated: true,completion: nil)
         }
         else{
+            txtAccountNumber.isUserInteractionEnabled = false
             accountNumber = txtAccountNumber.text!
             let personId = txtAccountNumber.text!
             ref.child("customers").child(personId).observeSingleEvent(of: .value, with: { (snapshot) in

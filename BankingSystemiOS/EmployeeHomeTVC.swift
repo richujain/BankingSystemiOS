@@ -64,14 +64,24 @@ class EmployeeHomeTVC: UITableViewController {
             let resultViewController = self.storyBoard.instantiateViewController(withIdentifier: "DepositVC") as! DepositViewController
             self.navigationController?.pushViewController(resultViewController, animated: true)
             
-        } else if indexPath.section == 2 && indexPath.row == 0{
+        }else if indexPath.section == 1 && indexPath.row == 1 {
+            let resultViewController = self.storyBoard.instantiateViewController(withIdentifier: "WithdrawlVC") as! WithdrawlViewController
+            self.navigationController?.pushViewController(resultViewController, animated: true)
+            
+        }else if indexPath.section == 1 && indexPath.row == 2 {
+            let resultViewController = self.storyBoard.instantiateViewController(withIdentifier: "TransferVC") as! TransferViewController
+            self.navigationController?.pushViewController(resultViewController, animated: true)
+            
+        }else if indexPath.section == 2 && indexPath.row == 0{
             let firebaseAuth = Auth.auth()
             do {
                 try firebaseAuth.signOut()
                 //self.navigationController?.pushViewController(self.newViewController, animated: true)
                 //self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                 dismissViewControllers()
-                self.navigationController?.popToRootViewController(animated: true)
+                //self.navigationController?.popToRootViewController(animated: true)
+                
+                self.performSegue(withIdentifier: "EmployeeToLogin", sender: self)
                 
             } catch let signOutError as NSError {
                 print ("Error signing out: %@", signOutError)

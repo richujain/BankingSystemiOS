@@ -61,6 +61,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         /*self!.overlay?.removeFromSuperview()
                         let resultViewController = self!.storyBoard.instantiateViewController(withIdentifier: "EmployeeHomeSB") as! EmployeeHomeTVC
                         self?.navigationController?.pushViewController(resultViewController, animated: true)*/
+                        
                         self?.performSegue(withIdentifier: "EmployeeHomeSB", sender: self)
                     }
                 }
