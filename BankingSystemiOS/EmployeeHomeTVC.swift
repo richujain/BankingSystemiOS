@@ -57,7 +57,7 @@ class EmployeeHomeTVC: UITableViewController {
             self.navigationController?.pushViewController(resultViewController, animated: true)
         }
         else if indexPath.section == 0 && indexPath.row == 1 {
-            let resultViewController = self.storyBoard.instantiateViewController(withIdentifier: "CreateAccountSB") as! CreateBankAccountVC
+            let resultViewController = self.storyBoard.instantiateViewController(withIdentifier: "ViewUser") as! ViewUserViewController
             self.navigationController?.pushViewController(resultViewController, animated: true)
             
         }else if indexPath.section == 1 && indexPath.row == 0 {

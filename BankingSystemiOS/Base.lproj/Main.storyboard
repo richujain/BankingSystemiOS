@@ -323,15 +323,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hvu-o9-rzd">
-                                <rect key="frame" x="20" y="684" width="374" height="51"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="DONE"/>
-                                <connections>
-                                    <action selector="btnDone:" destination="omZ-47-gJP" eventType="touchUpInside" id="SDX-qR-swi"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Account Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="970-sx-PIu">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="773394114" borderStyle="roundedRect" placeholder="Enter Account Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="970-sx-PIu">
                                 <rect key="frame" x="20" y="141" width="374" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -365,7 +357,6 @@
                         <viewLayoutGuide key="safeArea" id="T4b-lz-ydF"/>
                     </view>
                     <connections>
-                        <outlet property="btnDone" destination="Hvu-o9-rzd" id="Bpb-gO-vJO"/>
                         <outlet property="labelAddress" destination="h97-3K-s4P" id="EO0-IL-4Lj"/>
                         <outlet property="labelBalance" destination="7ij-R5-c6x" id="ETd-Uo-7Fv"/>
                         <outlet property="labelBankBranch" destination="wgJ-LF-ujX" id="LbL-aU-ULf"/>
@@ -564,6 +555,7 @@
                         <segue destination="RGX-EE-k0f" kind="show" id="VWl-QR-pc9"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="EmployeeToLogin" id="RwC-vC-NZY"/>
                         <segue destination="LUb-Rk-pg2" kind="show" id="bil-qh-eor"/>
+                        <segue destination="omZ-47-gJP" kind="show" identifier="EmployeeHomeToViewUser" id="45G-kA-Har"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tZ3-PK-xBt" userLabel="First Responder" sceneMemberID="firstResponder"/>
