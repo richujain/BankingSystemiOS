@@ -64,10 +64,11 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         //code
         statement = ""
         if test.remitter == "cash" && test.beneficiary == accountNumber{
-            statement = "$ \(test.amount!) withdrawed on \(test.datetime!)"
+            statement = "$ \(test.amount!) deposited on \(test.datetime!)"
         }
         else if test.beneficiary == "cash" && test.remitter == accountNumber{
-            statement = "$ \(test.amount!) deposited on \(test.datetime!)"
+            statement = "$ \(test.amount!) withdrawed on \(test.datetime!)"
+
         }
         else if test.remitter == accountNumber{
             statement = "$ \(test.amount!) transferred from your account to \(test.beneficiary!) on \(test.datetime!)"

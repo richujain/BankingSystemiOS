@@ -24,6 +24,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MFMessageCompo
     
     
     override func viewDidLoad() {
+        //https://stackoverflow.com/questions/37738366/how-to-check-if-user-has-valid-auth-session-firebase-ios
+        if Auth.auth().currentUser != nil {
+            presentHome()
+        }
+            /*let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+            backgroundImage.image = UIImage(named: "a")
+        backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
+            self.view.insertSubview(backgroundImage, at: 0)*/
+
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
@@ -32,9 +41,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MFMessageCompo
         self.passwordEditText.delegate = self
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
-        if Auth.auth().currentUser != nil {
-            presentHome()
-        }
+        
     }
     func presentHome() {
         self.performSegue(withIdentifier: "EmployeeHomeSB", sender: self)
@@ -161,39 +168,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MFMessageCompo
     @IBAction func loginButtonAction(_ sender: UIButton) {
         
         loginCheck()
-        let userDefault=UserDefaults.standard
-        if switchRememberMe.isOn{
-            if switchRememberMe.isOn{
-                
-                userDefault.set(passwordEditText.text, forKey: "password")
-                userDefault.set(emailEditText.text, forKey: "user")
-            }
-            else{
-                userDefault.removeObject(forKey: "password")
-                userDefault.removeObject(forKey: "user")
-            }
 
             
         }
         
     }
     
-    private func getRememberMeValues()
-    {
-        let userDefault = UserDefaults.standard
-        
-        if let email = userDefault.string(forKey: "userEmail")
-        {
-            emailEditText.text = email
-            
-            if let pwd = userDefault.string(forKey: "userPassword")
-            {
-                passwordEditText.text = pwd
-            }
-        }
-    }
     
     
-    
-}
 

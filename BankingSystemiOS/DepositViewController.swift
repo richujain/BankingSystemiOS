@@ -19,6 +19,7 @@ class DepositViewController: UIViewController {
     var flag:Int = 0
     var ref: DatabaseReference!
     var transferRef: DatabaseReference!
+    var transactionRef: DatabaseReference!
     var isValidAccount: Bool = false
     var accountNumber: String = ""
     
@@ -30,6 +31,7 @@ class DepositViewController: UIViewController {
         txtAmountToDeposit.isHidden = true
         ref = Database.database().reference()
         transferRef = Database.database().reference()
+        transactionRef = Database.database().reference()
     }
     func getAccountType(ref: DatabaseReference, completionHandler: @escaping completion) {
         flag = 0
@@ -114,6 +116,31 @@ class DepositViewController: UIViewController {
                             let doubleAmountToDeposit = Double(amountToDeposit)
                             let sum: Double = doubleBalance! + doubleAmountToDeposit!
                             self.ref.child("bank").child(accountType).child(String(self.accountNumber)).child("accountbalance").setValue(String(sum))
+                            self.ref = Database.database().reference().child("transactions").childByAutoId()
+                            self.ref.child("remitter").setValue("cash")
+                           
+                            
+                           self.ref.child("beneficiary").setValue(self.accountNumber)
+                            
+                            self.ref.child("datetime").setValue("23/07/2019")
+                            
+                            self.ref.child("amount").setValue(String(doubleAmountToDeposit!))
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            let alert=UIAlertController(title: "Success", message: "Deposit Successful", preferredStyle: UIAlertController.Style.alert)
+                            /*let actionok=UIAlertAction(title: "OK", style: .default, handler: nil)
+                             alert.addAction(actionok)
+                             self.present(alert,animated: true,completion: nil)*/
+                            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+                                self.navigationController?.popViewController(animated: true)
+                                return
+                            }))
+                            self.present(alert,animated: true,completion: nil)
                         }
                         else{
                             let alert=UIAlertController(title: "Failed", message: "Deposit Failed", preferredStyle: UIAlertController.Style.alert)
@@ -137,15 +164,7 @@ class DepositViewController: UIViewController {
                     }
                     
                     
-                    let alert=UIAlertController(title: "Success", message: "Deposit Successful", preferredStyle: UIAlertController.Style.alert)
-                    /*let actionok=UIAlertAction(title: "OK", style: .default, handler: nil)
-                     alert.addAction(actionok)
-                     self.present(alert,animated: true,completion: nil)*/
-                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
-                        self.navigationController?.popViewController(animated: true)
-                        return
-                    }))
-                    self.present(alert,animated: true,completion: nil)
+                    
                     
                 }
             })

@@ -169,11 +169,6 @@ class TransferViewController: UIViewController {
             self.present(alert,animated: true,completion: nil)
         }
         else{
-            
-            
-            
-            
-            
             let remitterAccountNumber = txtRemitterAccountNumber.text!
             let beneficiaryAccountNumber = txtBeneficiaryAccountNumber.text!
             let amountToTransfer: String = txtAmountToTransfer.text!
@@ -198,6 +193,16 @@ class TransferViewController: UIViewController {
                         let sum: Double = doubleBalance! - doubleAmountToDeposit!
                         print("sum is \(sum)")
 self.ref.child("bank").child(accountType).child(String(remitterAccountNumber)).child("accountbalance").setValue(String(sum))
+                        
+                        let alert=UIAlertController(title: "Success", message: "Transfer Successful", preferredStyle: UIAlertController.Style.alert)
+                        /*let actionok=UIAlertAction(title: "OK", style: .default, handler: nil)
+                         alert.addAction(actionok)
+                         self.present(alert,animated: true,completion: nil)*/
+                        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+                            self.navigationController?.popViewController(animated: true)
+                            return
+                        }))
+                        self.present(alert,animated: true,completion: nil)
                         
                         
                         
@@ -234,7 +239,15 @@ self.ref.child("bank").child(accountType).child(String(remitterAccountNumber)).c
                         
                         self.ref.child("bank").child(accountType).child(String(beneficiaryAccountNumber)).child("accountbalance").setValue(String(sum))
                         
+                        self.ref = Database.database().reference().child("transactions").childByAutoId()
+                        self.ref.child("beneficiary").setValue(beneficiaryAccountNumber)
                         
+                        
+                        self.ref.child("remitter").setValue(remitterAccountNumber)
+                        
+                        self.ref.child("datetime").setValue("23/07/2019")
+                        
+                        self.ref.child("amount").setValue(String(doubleAmountToDeposit!))
                         
                         //let user = User(username: username)
                         

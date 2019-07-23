@@ -123,7 +123,7 @@ class CreateBankAccountVC: UIViewController {
             
         }
         let emailId=txtEmailId.text
-        if emailId!.isValidEmail(){
+        if emailId!.isEmpty{
                 flag = false
                 let alert=UIAlertController(title: "Error", message: "Please Enter Valid Email ID", preferredStyle: UIAlertController.Style.alert)
                 let actionok=UIAlertAction(title: "ok", style: .default, handler: nil)
@@ -144,8 +144,16 @@ class CreateBankAccountVC: UIViewController {
             self.ref.child("bank").child(accountType).child(String(personId)).child("accountbalance").setValue(txtCustomerAccountBalance.text)
             self.ref.child("customers").child(String(personId)).child("photoaddressproofid").setValue(txtPhotoAddressProofId.text)
             
-            self.performSegue(withIdentifier: "ViewUser", sender: self)
-            
+            //self.performSegue(withIdentifier: "ViewUser", sender: self)
+            let alert=UIAlertController(title: "Success", message: "Account Created Successfully. Account Number is \(accountNumber)", preferredStyle: UIAlertController.Style.alert)
+            /*let actionok=UIAlertAction(title: "OK", style: .default, handler: nil)
+             alert.addAction(actionok)
+             self.present(alert,animated: true,completion: nil)*/
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+                self.navigationController?.popViewController(animated: true)
+                return
+            }))
+            self.present(alert,animated: true,completion: nil)
             
         }
     

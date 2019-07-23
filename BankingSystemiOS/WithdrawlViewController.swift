@@ -156,6 +156,16 @@ class WithdrawlViewController: UIViewController {
                     let sum: Double = doubleBalance! - doubleAmountToDeposit!
                     
                     self.ref.child("bank").child(accountType).child(String(self.accountNumber)).child("accountbalance").setValue(String(sum))
+                    
+                    self.ref = Database.database().reference().child("transactions").childByAutoId()
+                    self.ref.child("beneficiary").setValue("cash")
+                    
+                    
+                    self.ref.child("remitter").setValue(self.accountNumber)
+                    
+                    self.ref.child("datetime").setValue("23/07/2019")
+                    
+                    self.ref.child("amount").setValue(String(doubleAmountToDeposit!))
                 }
                 
                 
