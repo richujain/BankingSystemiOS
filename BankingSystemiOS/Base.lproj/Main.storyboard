@@ -53,17 +53,6 @@
                                 <rect key="frame" x="88" y="262" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Remember me?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="luR-vL-CXz">
-                                <rect key="frame" x="125" y="559" width="129" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="0.99429578850078015" blue="0.97157148647376035" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="tRV-gb-iAe">
-                                <rect key="frame" x="280" y="554" width="49" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bank of Toronto" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nB4-aC-Jp5">
                                 <rect key="frame" x="100" y="167" width="214" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -133,7 +122,6 @@
                         <outlet property="emailEditText" destination="blU-fY-Xt8" id="Fhm-fa-ODA"/>
                         <outlet property="loginButton" destination="9Pp-UO-NfD" id="Dc9-Ax-O5x"/>
                         <outlet property="passwordEditText" destination="5ky-Dy-oum" id="dRe-Ht-yN9"/>
-                        <outlet property="switchRememberMe" destination="tRV-gb-iAe" id="Hha-YP-gY9"/>
                         <segue destination="KD3-b9-Tti" kind="show" identifier="EmployeeHomeSB" id="fWp-kl-m61"/>
                     </connections>
                 </viewController>

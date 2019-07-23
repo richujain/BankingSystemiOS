@@ -32,7 +32,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MFMessageCompo
         self.passwordEditText.delegate = self
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
-        getRememberMeValues()
         if Auth.auth().currentUser != nil {
             presentHome()
         }
@@ -177,9 +176,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MFMessageCompo
             
         }
         
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        print("HELLO-viewWillAppear")
     }
     
     private func getRememberMeValues()
