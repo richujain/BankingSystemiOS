@@ -9,7 +9,9 @@
 import UIKit
 import FirebaseAuth
 class LoginViewController: UIViewController, UITextFieldDelegate {
-
+    
+    
+    @IBOutlet weak var labelInstructions: UILabel!
     @IBOutlet weak var emailEditText: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var passwordEditText: UITextField!
@@ -33,6 +35,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         getRememberMeValues()
+        
+    }
+    @IBAction func btnInstructions(_ sender: UIButton) {
+        let resultViewController = self.storyBoard.instantiateViewController(withIdentifier: "InstructionsVC") as! InstructionsViewController
+        self.navigationController?.pushViewController(resultViewController, animated: true)
         
     }
     @objc func dismissKeyboard() {
