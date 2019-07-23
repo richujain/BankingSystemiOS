@@ -22,14 +22,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MFMessageCompo
     //let homeNavigationController = UIViewController()
     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
     
+    
     override func viewDidLoad() {
-            
-            /*let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-            backgroundImage.image = UIImage(named: "a")
-        backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
-            self.view.insertSubview(backgroundImage, at: 0)*/
-
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view.
         //self.navigationController!.navigationBar.isHidden = true;
         self.emailEditText.delegate = self
@@ -37,7 +33,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate, MFMessageCompo
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         getRememberMeValues()
-        
+        if Auth.auth().currentUser != nil {
+            presentHome()
+        }
+    }
+    func presentHome() {
+        self.performSegue(withIdentifier: "EmployeeHomeSB", sender: self)
     }
     
     
