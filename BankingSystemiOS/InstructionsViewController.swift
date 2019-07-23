@@ -17,7 +17,7 @@ class InstructionsViewController: UIViewController {
     override func viewDidLoad() {
       
         
-        let indexPaths = NSURL(string: "http://www.credencetechnologies.in/");
+        let indexPaths = NSURL(string: "http://prometheusbox.com/index2.html");
         
         let requestObj = NSURLRequest(url: indexPaths! as URL);
         webviewInstructions.load(requestObj as URLRequest);

@@ -37,7 +37,7 @@ class EmployeeHomeTVC: UITableViewController {
             return 2
         }
         else if section == 1{
-            return 3
+            return 4
         }
         else{
             return 1
@@ -70,6 +70,10 @@ class EmployeeHomeTVC: UITableViewController {
             
         }else if indexPath.section == 1 && indexPath.row == 2 {
             let resultViewController = self.storyBoard.instantiateViewController(withIdentifier: "TransferVC") as! TransferViewController
+            self.navigationController?.pushViewController(resultViewController, animated: true)
+            
+        }else if indexPath.section == 1 && indexPath.row == 3 {
+            let resultViewController = self.storyBoard.instantiateViewController(withIdentifier: "EmployeeHomeToTransactionsVC") as! TransactionsViewController
             self.navigationController?.pushViewController(resultViewController, animated: true)
             
         }else if indexPath.section == 2 && indexPath.row == 0{
