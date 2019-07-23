@@ -116,6 +116,8 @@ class DepositViewController: UIViewController {
                             let doubleAmountToDeposit = Double(amountToDeposit)
                             let sum: Double = doubleBalance! + doubleAmountToDeposit!
                             self.ref.child("bank").child(accountType).child(String(self.accountNumber)).child("accountbalance").setValue(String(sum))
+                            //https://stackoverflow.com/questions/22306714/firebase-push-in-ios
+                            
                             self.ref = Database.database().reference().child("transactions").childByAutoId()
                             self.ref.child("remitter").setValue("cash")
                            
